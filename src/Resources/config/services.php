@@ -3,17 +3,15 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Sonata\SeoBundle\Seo\SeoPage;
-use Sonata\SeoBundle\Sitemap\SourceManager;
-use Sonata\SeoBundle\Twig\Extension\SeoExtension;
+use Nucleos\SeoBundle\Seo\SeoPage;
+use Nucleos\SeoBundle\Sitemap\SourceManager;
+use Nucleos\SeoBundle\Twig\Extension\SeoExtension;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 
@@ -22,15 +20,16 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     // Use "param" function for creating references to parameters when dropping support for Symfony 5.1
     $containerConfigurator->services()
 
-        ->set('sonata.seo.page.default', SeoPage::class)
+        ->set('nucleos_seo.page.default', SeoPage::class)
             ->public()
 
-        ->set('sonata.seo.twig.extension', SeoExtension::class)
+        ->set('nucleos_seo.twig.extension', SeoExtension::class)
             ->tag('twig.extension')
             ->args([
-                new ReferenceConfigurator('sonata.seo.page'),
+                new ReferenceConfigurator('nucleos_seo.page'),
                 '',
             ])
 
-        ->set('sonata.seo.sitemap.manager', SourceManager::class);
+        ->set('nucleos_seo.sitemap.manager', SourceManager::class)
+    ;
 };

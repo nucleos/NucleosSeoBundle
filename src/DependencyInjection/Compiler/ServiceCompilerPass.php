@@ -3,17 +3,15 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\DependencyInjection\Compiler;
+namespace Nucleos\SeoBundle\DependencyInjection\Compiler;
 
-use Sonata\SeoBundle\Seo\SeoPageInterface;
+use Nucleos\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -25,7 +23,7 @@ final class ServiceCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         /** @var array<string, mixed> $config */
-        $config = $container->getParameter('sonata.seo.config');
+        $config = $container->getParameter('nucleos_seo.config');
 
         $definition = $container->findDefinition($config['default']);
 
@@ -41,7 +39,7 @@ final class ServiceCompilerPass implements CompilerPassInterface
         $definition->addMethodCall('setHtmlAttributes', [$config['head']]);
         $definition->addMethodCall('setSeparator', [$config['separator']]);
 
-        $container->setAlias('sonata.seo.page', $config['default'])->setPublic(true);
+        $container->setAlias('nucleos_seo.page', $config['default'])->setPublic(true);
         $container->setAlias(SeoPageInterface::class, $config['default']);
     }
 }

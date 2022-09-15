@@ -3,21 +3,19 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\DependencyInjection\Compiler;
+namespace Nucleos\SeoBundle\Tests\DependencyInjection\Compiler;
 
+use Nucleos\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
+use Nucleos\SeoBundle\DependencyInjection\NucleosSeoExtension;
+use Nucleos\SeoBundle\Seo\SeoPage;
+use Nucleos\SeoBundle\Seo\SeoPageInterface;
 use PHPUnit\Framework\TestCase;
-use Sonata\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
-use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
-use Sonata\SeoBundle\Seo\SeoPage;
-use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class ServiceCompilerPassTest extends TestCase
@@ -27,22 +25,22 @@ final class ServiceCompilerPassTest extends TestCase
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
 
-        $container->register('sonata.seo.custom.page', SeoPage::class);
+        $container->register('nucleos_seo.custom.page', SeoPage::class);
 
         $config = [
             'page' => [
-                'default' => 'sonata.seo.custom.page',
+                'default' => 'nucleos_seo.custom.page',
             ],
         ];
 
-        $extension = new SonataSeoExtension();
+        $extension = new NucleosSeoExtension();
         $extension->load([$config], $container);
 
         (new ServiceCompilerPass())->process($container);
 
-        static::assertTrue($container->has('sonata.seo.page'));
+        static::assertTrue($container->has('nucleos_seo.page'));
         static::assertTrue($container->has(SeoPageInterface::class));
-        static::assertSame($container->get('sonata.seo.page'), $container->get(SeoPageInterface::class));
+        static::assertSame($container->get('nucleos_seo.page'), $container->get(SeoPageInterface::class));
 
         static::assertInstanceOf(SeoPage::class, $container->get(SeoPageInterface::class));
     }
@@ -51,23 +49,23 @@ final class ServiceCompilerPassTest extends TestCase
     {
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
-        $container->register('sonata.seo.custom.page', SeoPage::class);
+        $container->register('nucleos_seo.custom.page', SeoPage::class);
 
         $config = [
             'page' => [
-                'default' => 'sonata.seo.custom.page',
-                'title' => 'Project name',
+                'default'      => 'nucleos_seo.custom.page',
+                'title'        => 'Project name',
                 'title_prefix' => 'Prefix',
                 'title_suffix' => 'Suffix',
             ],
         ];
 
-        $extension = new SonataSeoExtension();
+        $extension = new NucleosSeoExtension();
         $extension->load([$config], $container);
 
         (new ServiceCompilerPass())->process($container);
 
-        $page = $container->get('sonata.seo.custom.page');
+        $page = $container->get('nucleos_seo.custom.page');
 
         \assert($page instanceof SeoPageInterface);
 

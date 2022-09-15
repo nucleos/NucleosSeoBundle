@@ -3,19 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\Request;
+namespace Nucleos\SeoBundle\Tests\Request;
 
+use Nucleos\SeoBundle\Seo\SeoPageInterface;
+use Nucleos\SeoBundle\Twig\Extension\SeoExtension;
 use PHPUnit\Framework\TestCase;
-use Sonata\SeoBundle\Seo\SeoPageInterface;
-use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
 final class SeoExtensionTest extends TestCase
 {
@@ -23,7 +21,7 @@ final class SeoExtensionTest extends TestCase
     {
         $page = $this->createMock(SeoPageInterface::class);
         $page->expects(static::once())->method('getHtmlAttributes')->willReturn([
-            'xmlns' => 'http://www.w3.org/1999/xhtml',
+            'xmlns'    => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
         ]);
 
@@ -71,10 +69,10 @@ final class SeoExtensionTest extends TestCase
         $page->expects(static::once())->method('getTitle')->willReturn('pięć głów zatkniętych na pal');
         $page->expects(static::once())->method('getMetas')->willReturn([
             'http-equiv' => [],
-            'name' => ['foo' => ['pięć głów zatkniętych na pal', []]],
-            'schema' => [],
-            'charset' => [],
-            'property' => [],
+            'name'       => ['foo' => ['pięć głów zatkniętych na pal', []]],
+            'schema'     => [],
+            'charset'    => [],
+            'property'   => [],
         ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -92,12 +90,12 @@ final class SeoExtensionTest extends TestCase
         $page = $this->createMock(SeoPageInterface::class);
         $page->expects(static::once())->method('getMetas')->willReturn([
             'http-equiv' => [],
-            'name' => ['foo' => ['bar "\'"', []]],
-            'schema' => [],
-            'charset' => ['UTF-8' => ['', []]],
-            'property' => [
+            'name'       => ['foo' => ['bar "\'"', []]],
+            'schema'     => [],
+            'charset'    => ['UTF-8' => ['', []]],
+            'property'   => [
                 'og:image:width' => [848, []],
-                'og:type' => [new MetaTest(), []],
+                'og:type'        => [new MetaTest(), []],
             ],
         ]);
 
@@ -111,10 +109,10 @@ final class SeoExtensionTest extends TestCase
 
     public function testName(): void
     {
-        $page = $this->createMock(SeoPageInterface::class);
+        $page      = $this->createMock(SeoPageInterface::class);
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame('sonata_seo', $extension->getName());
+        static::assertSame('nucleos_seo', $extension->getName());
     }
 
     public function testLinkCanonical(): void
@@ -134,8 +132,8 @@ final class SeoExtensionTest extends TestCase
     {
         $page = $this->createMock(SeoPageInterface::class);
         $page->expects(static::once())->method('getLangAlternates')->willReturn([
-                    'http://example.com/' => 'x-default',
-                ]);
+            'http://example.com/' => 'x-default',
+        ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 

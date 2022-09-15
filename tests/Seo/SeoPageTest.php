@@ -3,18 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\Seo;
+namespace Nucleos\SeoBundle\Tests\Seo;
 
+use Nucleos\SeoBundle\Seo\SeoPage;
 use PHPUnit\Framework\TestCase;
-use Sonata\SeoBundle\Seo\SeoPage;
+use RuntimeException;
 
 final class SeoPageTest extends TestCase
 {
@@ -25,10 +24,10 @@ final class SeoPageTest extends TestCase
 
         $expected = [
             'http-equiv' => [],
-            'name' => [],
-            'schema' => [],
-            'charset' => [],
-            'property' => ['foo' => ['bar', []]],
+            'name'       => [],
+            'schema'     => [],
+            'charset'    => [],
+            'property'   => ['foo' => ['bar', []]],
         ];
 
         static::assertSame($expected, $page->getMetas());
@@ -60,7 +59,7 @@ final class SeoPageTest extends TestCase
      */
     public function testInvalidMetas(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
 
         $page = new SeoPage();
         // @phpstan-ignore-next-line
@@ -153,7 +152,7 @@ final class SeoPageTest extends TestCase
         $page->addLangAlternate('http://example.com/en-us', 'en-us');
 
         $expected = [
-            'http://example.com/' => 'x-default',
+            'http://example.com/'      => 'x-default',
             'http://example.com/en-us' => 'en-us',
         ];
 

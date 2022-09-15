@@ -3,18 +3,16 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\DependencyInjection;
+namespace Nucleos\SeoBundle\Tests\DependencyInjection;
 
+use Nucleos\SeoBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
-use Sonata\SeoBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Yaml\Yaml;
 
@@ -24,18 +22,18 @@ final class ConfigurationTest extends TestCase
     {
         $expected = [
             'encoding' => 'UTF-8',
-            'page' => [
-                'default' => 'sonata.seo.page.default',
-                'head' => [],
-                'metas' => [],
-                'separator' => ' - ',
-                'title' => '',
+            'page'     => [
+                'default'      => 'nucleos_seo.page.default',
+                'head'         => [],
+                'metas'        => [],
+                'separator'    => ' - ',
+                'title'        => '',
                 'title_prefix' => null,
                 'title_suffix' => null,
             ],
             'sitemap' => [
                 'doctrine_orm' => [],
-                'services' => [],
+                'services'     => [],
             ],
         ];
 
@@ -46,7 +44,7 @@ final class ConfigurationTest extends TestCase
     {
         $values = [
             'page' => [
-                'head' => ['data-example' => 'abc-123'],
+                'head'  => ['data-example' => 'abc-123'],
                 'metas' => [
                     'http-equiv' => [
                         'Content-Type' => 'text/html; charset=utf-8',
@@ -68,7 +66,7 @@ final class ConfigurationTest extends TestCase
     public function testWithYamlConfig(): void
     {
         $values = Yaml::parse(
-            /* @phpstan-ignore-next-line */
+            // @phpstan-ignore-next-line
             file_get_contents(__DIR__.'/data/config.yml'),
             Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
         );
@@ -92,18 +90,18 @@ final class ConfigurationTest extends TestCase
     {
         return [
             'page' => [
-                'head' => [],
-                'metas' => [],
-                'default' => 'sonata.seo.page.default',
-                'separator' => ' - ',
-                'title' => '',
+                'head'         => [],
+                'metas'        => [],
+                'default'      => 'nucleos_seo.page.default',
+                'separator'    => ' - ',
+                'title'        => '',
                 'title_prefix' => null,
                 'title_suffix' => null,
             ],
             'encoding' => 'UTF-8',
-            'sitemap' => [
+            'sitemap'  => [
                 'doctrine_orm' => [],
-                'services' => [],
+                'services'     => [],
             ],
         ];
     }
@@ -116,7 +114,7 @@ final class ConfigurationTest extends TestCase
     private function processConfiguration(array $configs): array
     {
         $configuration = new Configuration();
-        $processor = new Processor();
+        $processor     = new Processor();
 
         return $processor->processConfiguration($configuration, $configs);
     }

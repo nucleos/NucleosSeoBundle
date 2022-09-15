@@ -3,16 +3,15 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Sitemap;
+namespace Nucleos\SeoBundle\Sitemap;
 
+use Iterator;
 use Sonata\Exporter\Source\ChainSourceIterator;
 
 final class Source
@@ -34,7 +33,7 @@ final class Source
         return $this->sources;
     }
 
-    public function addSource(\Iterator $source): void
+    public function addSource(Iterator $source): void
     {
         $this->sources->addSource($source);
     }

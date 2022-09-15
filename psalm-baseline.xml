@@ -1,8 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
-    <file src="src/DependencyInjection/Configuration.php">
-        <PossiblyUndefinedMethod occurrences="1">
-            <code>children</code>
-        </PossiblyUndefinedMethod>
-    </file>
-</files>
+<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488"/>

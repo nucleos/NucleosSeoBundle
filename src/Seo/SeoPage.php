@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Seo;
+namespace Nucleos\SeoBundle\Seo;
+
+use RuntimeException;
 
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
@@ -25,10 +25,10 @@ final class SeoPage implements SeoPageInterface
      */
     private array $metas = [
         'http-equiv' => [],
-        'name' => [],
-        'schema' => [],
-        'charset' => [],
-        'property' => [],
+        'name'       => [],
+        'schema'     => [],
+        'charset'    => [],
+        'property'   => [],
     ];
 
     /**
@@ -69,7 +69,7 @@ final class SeoPage implements SeoPageInterface
 
     public function setTitle(string $title): self
     {
-        $this->title = $title;
+        $this->title         = $title;
         $this->originalTitle = $title;
 
         return $this;
@@ -133,7 +133,7 @@ final class SeoPage implements SeoPageInterface
 
         foreach ($metas as $type => $metaItem) {
             if (!\is_array($metaItem)) {
-                throw new \RuntimeException('$metas must be an array');
+                throw new RuntimeException('$metas must be an array');
             }
 
             foreach ($metaItem as $name => $meta) {
@@ -278,8 +278,8 @@ final class SeoPage implements SeoPageInterface
     public function setBreadcrumb(string $context, array $options = []): self
     {
         $this->breadcrumb = array_merge_recursive([
-            'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
-            'context' => $context,
+            'menu_template' => '@NucleosSeo/Block/breadcrumb.html.twig',
+            'context'       => $context,
         ], $options);
 
         return $this;

@@ -3,20 +3,20 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Command;
+namespace Nucleos\SeoBundle\Command;
 
+use Exception;
+use LogicException;
+use Nucleos\SeoBundle\Sitemap\Source;
+use Nucleos\SeoBundle\Sitemap\SourceManager;
 use Sonata\Exporter\Handler;
 use Sonata\Exporter\Writer\SitemapWriter;
-use Sonata\SeoBundle\Sitemap\Source;
-use Sonata\SeoBundle\Sitemap\SourceManager;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -37,7 +37,7 @@ use Symfony\Component\Routing\RouterInterface;
 final class SitemapGeneratorCommand extends Command
 {
     // TODO: Remove static properties when support for Symfony < 5.4 is dropped.
-    protected static $defaultName = 'sonata:seo:sitemap';
+    protected static $defaultName        = 'sonata:seo:sitemap';
     protected static $defaultDescription = 'Create a sitemap';
 
     private RouterInterface $router;
@@ -51,9 +51,9 @@ final class SitemapGeneratorCommand extends Command
         SourceManager $sitemapManager,
         Filesystem $filesystem
     ) {
-        $this->router = $router;
+        $this->router         = $router;
         $this->sitemapManager = $sitemapManager;
-        $this->filesystem = $filesystem;
+        $this->filesystem     = $filesystem;
 
         parent::__construct();
     }
@@ -78,16 +78,17 @@ final class SitemapGeneratorCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Set the sitemap relative path (if in a specific directory)',
                 ''
-            );
+            )
+        ;
     }
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $host = $input->getArgument('host');
-        $scheme = $input->getOption('scheme');
-        $baseUrl = $input->getOption('baseurl');
+        $host         = $input->getArgument('host');
+        $scheme       = $input->getOption('scheme');
+        $baseUrl      = $input->getOption('baseurl');
         $permanentDir = $input->getArgument('dir');
-        $appendPath = $input->hasOption('sitemap_path') ? $input->getOption('sitemap_path') : $baseUrl;
+        $appendPath   = $input->hasOption('sitemap_path') ? $input->getOption('sitemap_path') : $baseUrl;
 
         $this->getContext()->setHost($host);
         $this->getContext()->setScheme($scheme);
@@ -127,7 +128,7 @@ final class SitemapGeneratorCommand extends Command
      */
     private function createTempDir(OutputInterface $output): ?string
     {
-        $tempDir = sys_get_temp_dir().'/sonata_sitemap_'.md5(__DIR__);
+        $tempDir = sys_get_temp_dir().'/nucleos_sitemap_'.md5(__DIR__);
 
         $output->writeln(sprintf('Creating temporary directory: %s', $tempDir));
 
@@ -141,7 +142,7 @@ final class SitemapGeneratorCommand extends Command
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     private function generateSitemap(string $dir, string $scheme, string $host, string $appendPath): void
     {
@@ -154,7 +155,7 @@ final class SitemapGeneratorCommand extends Command
 
             try {
                 Handler::create($sitemap->getSources(), $write)->export();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->filesystem->remove($dir);
 
                 throw $e;
@@ -177,7 +178,7 @@ final class SitemapGeneratorCommand extends Command
             $pathname = $file->getRealPath();
 
             if (false === $pathname) {
-                throw new \LogicException(sprintf('File %s does not exist', (string) $file));
+                throw new LogicException(sprintf('File %s does not exist', (string) $file));
             }
 
             $this->filesystem->remove($pathname);
@@ -188,7 +189,7 @@ final class SitemapGeneratorCommand extends Command
             $pathname = $file->getRealPath();
 
             if (false === $pathname) {
-                throw new \LogicException(sprintf('File %s does not exist', (string) $file));
+                throw new LogicException(sprintf('File %s does not exist', (string) $file));
             }
 
             $this->filesystem->rename($pathname, sprintf('%s/%s', $permanentDir, $file->getFilename()));

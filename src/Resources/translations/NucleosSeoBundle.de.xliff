@@ -1,106 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
     <body>
-      <trans-unit id="sonata_seo_homepage_breadcrumb">
-        <source>sonata_seo_homepage_breadcrumb</source>
+      <trans-unit id="nucleos_seo_homepage_breadcrumb">
+        <source>nucleos_seo_homepage_breadcrumb</source>
         <target>Home</target>
       </trans-unit>
-      <trans-unit id="sonata_seo_share_by_email">
-        <source>sonata_seo_share_by_email</source>
-        <target>Condividi via email</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_email_share_button">
-        <source>sonata.seo.block.email.share_button</source>
-        <target>Condividi via E-Mail</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_facebook_like_box">
-        <source>sonata.seo.block.facebook.like_box</source>
-        <target>Facebook - Box like</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_facebook_like_button">
-        <source>sonata.seo.block.facebook.like_button</source>
-        <target>Facebook - Pulsante like</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_facebook_send_button">
-        <source>sonata.seo.block.facebook.send_button</source>
-        <target>Facebook - Invia</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_facebook_share_button">
-        <source>sonata.seo.block.facebook.share_button</source>
-        <target>Facebook - Condividi</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_twitter_share_button">
-        <source>sonata.seo.block.twitter.share_button</source>
-        <target>Twitter - Condividi</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_twitter_follow_button">
-        <source>sonata.seo.block.twitter.follow_button</source>
-        <target>Twitter - Segui</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_twitter_hashtag_button">
-        <source>sonata.seo.block.twitter.hashtag_button</source>
-        <target>Twitter - Hashtag</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_twitter_mention_button">
-        <source>sonata.seo.block.twitter.mention_button</source>
-        <target>Twitter - Menziona</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_twitter_embed">
-        <source>sonata.seo.block.twitter.embed</source>
-        <target>Twitter - Incorpora</target>
-      </trans-unit>
-      <trans-unit id="sonata_seo_block_pinterest_pin_button">
-        <source>sonata.seo.block.pinterest.pin_button</source>
-        <target>Pinterest - Pin</target>
+      <trans-unit id="nucleos_seo_share_by_email">
+        <source>nucleos_seo_share_by_email</source>
+        <target>Via E-Mail teilen</target>
       </trans-unit>
       <trans-unit id="form.label_colorscheme">
         <source>form.label_colorscheme</source>
-        <target>Schema colori</target>
+        <target>Farbschema</target>
       </trans-unit>
       <trans-unit id="form.label_colorscheme_light">
         <source>form.label_colorscheme_light</source>
-        <target>Chiaro</target>
+        <target>Hell</target>
       </trans-unit>
       <trans-unit id="form.label_colorscheme_dark">
         <source>form.label_colorscheme_dark</source>
-        <target>Scuro</target>
+        <target>Dunkel</target>
       </trans-unit>
       <trans-unit id="form.label_subject">
         <source>form.label_subject</source>
-        <target>Oggetto</target>
+        <target>Betreff</target>
       </trans-unit>
       <trans-unit id="form.label_body">
         <source>form.label_body</source>
-        <target>Corpo</target>
+        <target>Nachricht</target>
       </trans-unit>
       <trans-unit id="form.label_url">
         <source>form.label_url</source>
-        <target>URL</target>
+        <target>Url</target>
       </trans-unit>
       <trans-unit id="form.label_width">
         <source>form.label_width</source>
-        <target>Larghezza</target>
+        <target>Breite</target>
       </trans-unit>
       <trans-unit id="form.label_height">
         <source>form.label_height</source>
-        <target>Altezza</target>
+        <target>Höhe</target>
       </trans-unit>
       <trans-unit id="form.label_show_faces">
         <source>form.label_show_faces</source>
-        <target>Mostra i volti degli amici</target>
+        <target>Avatare anzeigen</target>
       </trans-unit>
       <trans-unit id="form.label_show_header">
         <source>form.label_show_header</source>
-        <target>Mostra intestazione</target>
+        <target>Kopfbereich anzeigen</target>
       </trans-unit>
       <trans-unit id="form.label_show_posts">
         <source>form.label_show_posts</source>
-        <target>Mostra i post</target>
+        <target>Beiträge anzeigen</target>
       </trans-unit>
       <trans-unit id="form.label_show_border">
         <source>form.label_show_border</source>
-        <target>Mostra bordo</target>
+        <target>Rahmen anzeigen</target>
       </trans-unit>
       <trans-unit id="form.label_layout">
         <source>form.label_layout</source>
@@ -108,71 +64,71 @@
       </trans-unit>
       <trans-unit id="form.label_layout_standard">
         <source>form.label_layout_standard</source>
-        <target>standard</target>
+        <target>Standard</target>
       </trans-unit>
       <trans-unit id="form.label_layout_box_count">
         <source>form.label_layout_box_count</source>
-        <target>box count</target>
+        <target>Zähler Box</target>
       </trans-unit>
       <trans-unit id="form.label_layout_button_count">
         <source>form.label_layout_button_count</source>
-        <target>button count</target>
+        <target>Zahler Buttons</target>
       </trans-unit>
       <trans-unit id="form.label_layout_button">
         <source>form.label_layout_button</source>
-        <target>button</target>
+        <target>Buttons</target>
       </trans-unit>
       <trans-unit id="form.label_layout_icon_link">
         <source>form.label_layout_icon_link</source>
-        <target>Icona con collegamento</target>
+        <target>Icon mit Link</target>
       </trans-unit>
       <trans-unit id="form.label_layout_icon">
         <source>form.label_layout_icon</source>
-        <target>Icona</target>
+        <target>Icon</target>
       </trans-unit>
       <trans-unit id="form.label_layout_link">
         <source>form.label_layout_link</source>
-        <target>Collegamento</target>
+        <target>Link</target>
       </trans-unit>
       <trans-unit id="form.label_action">
         <source>form.label_action</source>
-        <target>Azione</target>
+        <target>Aktion</target>
       </trans-unit>
       <trans-unit id="form.label_action_like">
         <source>form.label_action_like</source>
-        <target>Like</target>
+        <target>Gefällt mir</target>
       </trans-unit>
       <trans-unit id="form.label_action_recommend">
         <source>form.label_action_recommend</source>
-        <target>Raccomandato</target>
+        <target>Empfehlen</target>
       </trans-unit>
       <trans-unit id="form.label_share">
         <source>form.label_share</source>
-        <target>Condividi</target>
+        <target>Teilen</target>
       </trans-unit>
       <trans-unit id="form.label_image">
         <source>form.label_image</source>
-        <target>Immagine</target>
+        <target>Bild</target>
       </trans-unit>
       <trans-unit id="form.label_description">
         <source>form.label_description</source>
-        <target>Descrizione</target>
+        <target>Beschreibung</target>
       </trans-unit>
       <trans-unit id="form.label_size">
         <source>form.label_size</source>
-        <target>Grandezza</target>
+        <target>Größe</target>
       </trans-unit>
       <trans-unit id="form.label_shape">
         <source>form.label_shape</source>
-        <target>Forma</target>
+        <target>Gestaltung</target>
       </trans-unit>
       <trans-unit id="form.label_shape_rectangular">
         <source>form.label_shape_rectangular</source>
-        <target>Rettangolare</target>
+        <target>Rechteck</target>
       </trans-unit>
       <trans-unit id="form.label_shape_round">
         <source>form.label_shape_round</source>
-        <target>Rotonda</target>
+        <target>Rund</target>
       </trans-unit>
       <trans-unit id="form.label_tweet">
         <source>form.label_tweet</source>
@@ -180,67 +136,67 @@
       </trans-unit>
       <trans-unit id="form.label_maxwidth">
         <source>form.label_maxwidth</source>
-        <target>Larghezza massima</target>
+        <target>Maximale Breite</target>
       </trans-unit>
       <trans-unit id="form.label_hide_media">
         <source>form.label_hide_media</source>
-        <target>Nascondi media</target>
+        <target>Medieninhalte ausblenden</target>
       </trans-unit>
       <trans-unit id="form.label_hide_thread">
         <source>form.label_hide_thread</source>
-        <target>Nascondi thread</target>
+        <target>Diskussionen ausblenden</target>
       </trans-unit>
       <trans-unit id="form.label_omit_script">
         <source>form.label_omit_script</source>
-        <target>Ometti script</target>
+        <target>Script laden</target>
       </trans-unit>
       <trans-unit id="form.label_align">
         <source>form.label_align</source>
-        <target>Allineamento</target>
+        <target>Ausrichtung</target>
       </trans-unit>
       <trans-unit id="form.label_align_left">
         <source>form.label_align_left</source>
-        <target>sinistra</target>
+        <target>Linksbündig</target>
       </trans-unit>
       <trans-unit id="form.label_align_right">
         <source>form.label_align_right</source>
-        <target>destra</target>
+        <target>Rechtsbündig</target>
       </trans-unit>
       <trans-unit id="form.label_align_center">
         <source>form.label_align_center</source>
-        <target>centrato</target>
+        <target>Zentriert</target>
       </trans-unit>
       <trans-unit id="form.label_align_none">
         <source>form.label_align_none</source>
-        <target>nessuno</target>
+        <target>Fließtext</target>
       </trans-unit>
       <trans-unit id="form.label_related">
         <source>form.label_related</source>
-        <target>Correlati</target>
+        <target>Verwandt</target>
       </trans-unit>
       <trans-unit id="form.label_lang">
         <source>form.label_lang</source>
-        <target>Lingua</target>
+        <target>Sprache</target>
       </trans-unit>
       <trans-unit id="form.label_user">
         <source>form.label_user</source>
-        <target>Utente</target>
+        <target>Benutzer</target>
       </trans-unit>
       <trans-unit id="form.label_show_username">
         <source>form.label_show_username</source>
-        <target>Mostra username</target>
+        <target>Benutzername anzeigen</target>
       </trans-unit>
       <trans-unit id="form.label_large_button">
         <source>form.label_large_button</source>
-        <target>Pulsante grande</target>
+        <target>Große Buttons</target>
       </trans-unit>
       <trans-unit id="form.label_opt_out">
         <source>form.label_opt_out</source>
-        <target>Opt out</target>
+        <target>Zugriff beschränken</target>
       </trans-unit>
       <trans-unit id="form.label_language">
         <source>form.label_language</source>
-        <target>Lingua</target>
+        <target>Sprache</target>
       </trans-unit>
       <trans-unit id="form.label_hashtag">
         <source>form.label_hashtag</source>
@@ -248,15 +204,15 @@
       </trans-unit>
       <trans-unit id="form.label_text">
         <source>form.label_text</source>
-        <target>Testo</target>
+        <target>Text</target>
       </trans-unit>
       <trans-unit id="form.label_recommend">
         <source>form.label_recommend</source>
-        <target>Consigliato</target>
+        <target>Vorschlagen</target>
       </trans-unit>
       <trans-unit id="form.label_show_count">
         <source>form.label_show_count</source>
-        <target>Mostra conteggio</target>
+        <target>Zähler anzeigen</target>
       </trans-unit>
       <trans-unit id="form.label_via">
         <source>form.label_via</source>
@@ -264,27 +220,27 @@
       </trans-unit>
       <trans-unit id="form.help_tweet">
         <source>form.help_tweet</source>
-        <target>Id del tweet, URL o contenuto. Se il contenuto HTML viene inserito direttamente, le altre opzioni non saranno supportate.</target>
+        <target>Tweet id, Url oder HTML Inhalt. Wenn direkter HTML Inhalt übergeben wird, werden alle weiteren Einstellungen nicht berücksichtigt.</target>
       </trans-unit>
       <trans-unit id="form.help_maxwidth">
         <source>form.help_maxwidth</source>
-        <target>Deve essere tra i 250 e i 550.</target>
+        <target>Muss zwischen 250 und 550 liegen.</target>
       </trans-unit>
       <trans-unit id="form.help_hide_media">
         <source>form.help_hide_media</source>
-        <target>Nascondere i media contenuti nel tweet?</target>
+        <target>Blendet alle Medieninhalte aus Tweets aus.</target>
       </trans-unit>
       <trans-unit id="form.help_hide_thread">
         <source>form.help_hide_thread</source>
-        <target>Mostrare discussione?</target>
+        <target>Blendet Diskussionen zu Tweets aus.</target>
       </trans-unit>
       <trans-unit id="form.help_omit_script">
         <source>form.help_omit_script</source>
-        <target>Dovrebbe essere selezionato solo una volta per pagina. Se incorpori diversi tweet nella pagina, deseleziona dagli altri.</target>
+        <target>Sollte nur einmal pro Seite aktiviert sein, wenn mehrere Tweets dargestellt werden.</target>
       </trans-unit>
       <trans-unit id="form.help_related">
         <source>form.help_related</source>
-        <target>Vedi anche l'argomento 'related' su https://dev.twitter.com/docs/intents</target>
+        <target>Siehe Twitter Dokumentation: https://dev.twitter.com/docs/intents</target>
       </trans-unit>
     </body>
   </file>

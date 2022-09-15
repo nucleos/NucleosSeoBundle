@@ -3,19 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Event;
+namespace Nucleos\SeoBundle\Event;
 
+use Nucleos\SeoBundle\Block\Breadcrumb\BreadcrumbBlockService;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Sonata\BlockBundle\Model\Block;
-use Sonata\SeoBundle\Block\Breadcrumb\BreadcrumbBlockService;
 
 /**
  * BreadcrumbListener for Block Event.

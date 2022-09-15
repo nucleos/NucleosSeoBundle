@@ -3,31 +3,33 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Sitemap;
+namespace Nucleos\SeoBundle\Sitemap;
+
+use ArrayIterator;
+use Iterator;
+use ReturnTypeWillChange;
 
 /**
  * Manager several chain source iterator grouped.
  *
- * @phpstan-implements \Iterator<string, Source>
+ * @phpstan-implements Iterator<string, Source>
  */
-final class SourceManager implements \Iterator
+final class SourceManager implements Iterator
 {
     /**
-     * @var \ArrayIterator<string, Source>
+     * @var ArrayIterator<string, Source>
      */
-    private \ArrayIterator $sources;
+    private ArrayIterator $sources;
 
     public function __construct()
     {
-        $this->sources = new \ArrayIterator();
+        $this->sources = new ArrayIterator();
     }
 
     /**
@@ -35,7 +37,7 @@ final class SourceManager implements \Iterator
      *
      * @param mixed[] $types
      */
-    public function addSource(string $group, \Iterator $source, array $types = []): void
+    public function addSource(string $group, Iterator $source, array $types = []): void
     {
         if (!isset($this->sources[$group])) {
             $this->sources[$group] = new Source();
@@ -53,7 +55,7 @@ final class SourceManager implements \Iterator
     /**
      * @return Source
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function current()
     {
         return $this->sources->current();
@@ -67,7 +69,7 @@ final class SourceManager implements \Iterator
     /**
      * @return string
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function key()
     {
         return $this->sources->key();

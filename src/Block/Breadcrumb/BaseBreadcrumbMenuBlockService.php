@@ -3,15 +3,13 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Block\Breadcrumb;
+namespace Nucleos\SeoBundle\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -38,10 +36,10 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
     final public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         $responseSettings = [
-            'menu' => $this->getMenu($blockContext),
+            'menu'         => $this->getMenu($blockContext),
             'menu_options' => $this->getMenuOptions($blockContext->getSettings()),
-            'block' => $blockContext->getBlock(),
-            'context' => $blockContext,
+            'block'        => $blockContext->getBlock(),
+            'context'      => $blockContext,
         ];
 
         $template = $blockContext->getTemplate();
@@ -58,18 +56,18 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'cache_policy' => 'public',
-            'template' => '@SonataBlock/Block/block_core_menu.html.twig',
-            'safe_labels' => false,
-            'current_class' => 'active',
-            'first_class' => false,
-            'last_class' => false,
-            'current_uri' => null,
-            'menu_class' => 'list-group',
-            'children_class' => 'list-group-item',
-            'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
+            'cache_policy'          => 'public',
+            'template'              => '@SonataBlock/Block/block_core_menu.html.twig',
+            'safe_labels'           => false,
+            'current_class'         => 'active',
+            'first_class'           => false,
+            'last_class'            => false,
+            'current_uri'           => null,
+            'menu_class'            => 'list-group',
+            'children_class'        => 'list-group-item',
+            'menu_template'         => '@NucleosSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
-            'context' => null,
+            'context'               => null,
         ]);
     }
 
@@ -83,7 +81,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         $menu->setUri($settings['current_uri']);
 
         if (true === $settings['include_homepage_link']) {
-            $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
+            $menu->addChild('nucleos_seo_homepage_breadcrumb', ['uri' => '/']);
         }
 
         return $menu;
@@ -105,9 +103,9 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
     {
         $mapping = [
             'current_class' => 'currentClass',
-            'first_class' => 'firstClass',
-            'last_class' => 'lastClass',
-            'safe_labels' => 'allow_safe_labels',
+            'first_class'   => 'firstClass',
+            'last_class'    => 'lastClass',
+            'safe_labels'   => 'allow_safe_labels',
             'menu_template' => 'template',
         ];
 

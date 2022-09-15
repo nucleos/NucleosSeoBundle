@@ -3,26 +3,24 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\DependencyInjection;
+namespace Nucleos\SeoBundle\Tests\DependencyInjection;
 
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
+use Nucleos\SeoBundle\DependencyInjection\NucleosSeoExtension;
 use PHPUnit\Framework\TestCase;
 use Sonata\BlockBundle\SonataBlockBundle;
-use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @author Vincent Tommasi <tommasi.v@gmail.com>
  */
-final class SonataSeoExtensionTest extends TestCase
+final class NucleosSeoExtensionTest extends TestCase
 {
     /**
      * Tests the loading of blocks.xml file.
@@ -32,18 +30,18 @@ final class SonataSeoExtensionTest extends TestCase
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', [
             'SonataBlockBundle' => SonataBlockBundle::class,
-            'KnpMenuBundle' => KnpMenuBundle::class,
+            'KnpMenuBundle'     => KnpMenuBundle::class,
         ]);
 
-        $extension = new SonataSeoExtension();
+        $extension = new NucleosSeoExtension();
         $extension->load([[]], $container);
 
-        static::assertTrue($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
+        static::assertTrue($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));
 
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
         $extension->load([[]], $container);
 
-        static::assertFalse($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
+        static::assertFalse($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));
     }
 }

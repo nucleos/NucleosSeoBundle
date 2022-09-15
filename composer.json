@@ -1,6 +1,6 @@
 {
-    "name": "sonata-project/seo-bundle",
-    "description": "Symfony SonataSeoBundle",
+    "name": "nucleos/seo-bundle",
+    "description": "Symfony NucleosSeoBundle",
     "license": "MIT",
     "type": "symfony-bundle",
     "keywords": [
@@ -9,16 +9,29 @@
     ],
     "authors": [
         {
-            "name": "Thomas Rabaix",
-            "email": "thomas.rabaix@sonata-project.org",
-            "homepage": "https://sonata-project.org"
-        },
-        {
-            "name": "Sonata Community",
-            "homepage": "https://github.com/sonata-project/SonataSeoBundle/contributors"
+            "name": "Christian Gripp",
+            "email": "mail@core23.de"
         }
     ],
-    "homepage": "https://docs.sonata-project.org/projects/SonataSeoBundle",
+    "homepage": "https://nucleos.rocks",
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/core23"
+        },
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/core23"
+        },
+        {
+            "type": "ko-fi",
+            "url": "https://ko-fi.com/core23"
+        },
+        {
+            "type": "other",
+            "url": "https://donate.core23.de"
+        }
+    ],
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
@@ -34,7 +47,6 @@
         "twig/twig": "^2.9 || ^3.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.4",
         "knplabs/knp-menu": "^3.0",
         "knplabs/knp-menu-bundle": "^3.0",
         "phpstan/extension-installer": "^1.0",
@@ -44,7 +56,6 @@
         "phpstan/phpstan-symfony": "^1.0",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.17",
-        "rector/rector": "^0.13",
         "symfony/console": "^4.4 || ^5.4 || ^6.0",
         "symfony/filesystem": "^4.4 || ^5.4 || ^6.0",
         "symfony/finder": "^4.4 || ^5.4 || ^6.0",
@@ -54,19 +65,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Sonata\\SeoBundle\\": "src/"
+            "Nucleos\\SeoBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sonata\\SeoBundle\\Tests\\": "tests/"
+            "Nucleos\\SeoBundle\\Tests\\": "tests/"
         }
     },
     "config": {
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true,
-            "phpstan/extension-installer": true
-        },
         "sort-packages": true
     }
 }

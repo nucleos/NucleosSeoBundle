@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,10 +17,8 @@ declare(strict_types=1);
 
 use Doctrine\Deprecations\Deprecation;
 
-/*
- * fix encoding issue while running text on different host with different locale configuration
- */
-setlocale(\LC_ALL, 'en_US.UTF-8');
+// fix encoding issue while running text on different host with different locale configuration
+setlocale(LC_ALL, 'en_US.UTF-8');
 
 require_once __DIR__.'/../vendor/autoload.php';
 

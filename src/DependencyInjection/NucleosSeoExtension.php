@@ -3,16 +3,15 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\DependencyInjection;
+namespace Nucleos\SeoBundle\DependencyInjection;
 
+use RuntimeException;
 use Sonata\Exporter\Source\DoctrineDBALConnectionSourceIterator;
 use Sonata\Exporter\Source\SymfonySitemapSourceIterator;
 use Symfony\Component\Config\FileLocator;
@@ -25,13 +24,13 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /**
  * This is the class that loads and manages your bundle configuration.
  */
-final class SonataSeoExtension extends Extension
+final class NucleosSeoExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
-        $config = $this->fixConfiguration($config);
+        $config        = $this->processConfiguration($configuration, $configs);
+        $config        = $this->fixConfiguration($config);
 
         /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
@@ -49,8 +48,9 @@ final class SonataSeoExtension extends Extension
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
 
-        $container->getDefinition('sonata.seo.twig.extension')
-            ->replaceArgument(1, $config['encoding']);
+        $container->getDefinition('nucleos_seo.twig.extension')
+            ->replaceArgument(1, $config['encoding'])
+        ;
     }
 
     /**
@@ -60,7 +60,7 @@ final class SonataSeoExtension extends Extension
      */
     private function configureSeoPage(array $config, ContainerBuilder $container): void
     {
-        $container->setParameter('sonata.seo.config', $config);
+        $container->setParameter('nucleos_seo.config', $config);
     }
 
     /**
@@ -70,13 +70,13 @@ final class SonataSeoExtension extends Extension
      */
     private function configureSitemap(array $config, ContainerBuilder $container): void
     {
-        $source = $container->getDefinition('sonata.seo.sitemap.manager');
+        $source = $container->getDefinition('nucleos_seo.sitemap.manager');
 
         $source->setShared(false);
 
         foreach ($config['doctrine_orm'] as $pos => $sitemap) {
             // define the connectionIterator
-            $connectionIteratorId = 'sonata.seo.source.doctrine_connection_iterator_'.$pos;
+            $connectionIteratorId = 'nucleos_seo.source.doctrine_connection_iterator_'.$pos;
 
             $connectionIterator = new Definition(DoctrineDBALConnectionSourceIterator::class, [
                 new Reference($sitemap['connection']),
@@ -87,7 +87,7 @@ final class SonataSeoExtension extends Extension
             $container->setDefinition($connectionIteratorId, $connectionIterator);
 
             // define the sitemap proxy iterator
-            $sitemapIteratorId = 'sonata.seo.source.doctrine_sitemap_iterator_'.$pos;
+            $sitemapIteratorId = 'nucleos_seo.source.doctrine_sitemap_iterator_'.$pos;
 
             $sitemapIterator = new Definition(SymfonySitemapSourceIterator::class, [
                 new Reference($connectionIteratorId),
@@ -118,23 +118,23 @@ final class SonataSeoExtension extends Extension
     private function fixConfiguration(array $config): array
     {
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
-            $sitemap['group'] ??= false;
-            $sitemap['types'] ??= [];
+            $sitemap['group']      ??= false;
+            $sitemap['types']      ??= [];
             $sitemap['connection'] ??= 'doctrine.dbal.default_connection';
-            $sitemap['route'] ??= false;
+            $sitemap['route']      ??= false;
             $sitemap['parameters'] ??= false;
-            $sitemap['query'] ??= false;
+            $sitemap['query']      ??= false;
 
             if (false === $sitemap['route']) {
-                throw new \RuntimeException('Route cannot be empty, please review the sonata_seo.sitemap configuration');
+                throw new RuntimeException('Route cannot be empty, please review the nucleos_seo.sitemap configuration');
             }
 
             if (false === $sitemap['query']) {
-                throw new \RuntimeException('Query cannot be empty, please review the sonata_seo.sitemap configuration');
+                throw new RuntimeException('Query cannot be empty, please review the nucleos_seo.sitemap configuration');
             }
 
             if (false === $sitemap['parameters']) {
-                throw new \RuntimeException('Route\'s parameters cannot be empty, please review the sonata_seo.sitemap configuration');
+                throw new RuntimeException('Route\'s parameters cannot be empty, please review the nucleos_seo.sitemap configuration');
             }
 
             $config['sitemap']['doctrine_orm'][$pos] = $sitemap;
@@ -145,14 +145,14 @@ final class SonataSeoExtension extends Extension
                 $sitemap = [
                     'group' => false,
                     'types' => [],
-                    'id' => $sitemap,
+                    'id'    => $sitemap,
                 ];
             } else {
                 $sitemap['group'] ??= false;
                 $sitemap['types'] ??= [];
 
                 if (!isset($sitemap['id'])) {
-                    throw new \RuntimeException('Service id must to be defined, please review the sonata_seo.sitemap configuration');
+                    throw new RuntimeException('Service id must to be defined, please review the nucleos_seo.sitemap configuration');
                 }
             }
 

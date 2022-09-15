@@ -3,17 +3,15 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Twig\Extension;
+namespace Nucleos\SeoBundle\Twig\Extension;
 
-use Sonata\SeoBundle\Seo\SeoPageInterface;
+use Nucleos\SeoBundle\Seo\SeoPageInterface;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -26,31 +24,31 @@ final class SeoExtension extends AbstractExtension
 
     public function __construct(SeoPageInterface $page, string $encoding)
     {
-        $this->page = $page;
+        $this->page     = $page;
         $this->encoding = $encoding;
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_title_text', [$this, 'getTitleText'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_breadcrumb', [$this, 'renderBreadcrumb'], [
+            new TwigFunction('nucleos_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_title_text', [$this, 'getTitleText'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
+            new TwigFunction('nucleos_seo_breadcrumb', [$this, 'renderBreadcrumb'], [
                 'needs_environment' => true,
-                'is_safe' => ['html'],
+                'is_safe'           => ['html'],
             ]),
         ];
     }
 
     public function getName(): string
     {
-        return 'sonata_seo';
+        return 'nucleos_seo';
     }
 
     public function getTitle(): string
@@ -141,14 +139,14 @@ final class SeoExtension extends AbstractExtension
 
     public function renderBreadcrumb(Environment $environment, ?string $currentUri = null): string
     {
-        return $environment->render('@SonataSeo/breadcrumb.html.twig', [
+        return $environment->render('@NucleosSeo/breadcrumb.html.twig', [
             'currentUri' => $currentUri,
-            'options' => $this->page->getBreadcrumbOptions(),
+            'options'    => $this->page->getBreadcrumbOptions(),
         ]);
     }
 
     private function normalize(string $string): string
     {
-        return htmlentities(strip_tags($string), \ENT_COMPAT, $this->encoding);
+        return htmlentities(strip_tags($string), ENT_COMPAT, $this->encoding);
     }
 }

@@ -3,15 +3,13 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\DependencyInjection;
+namespace Nucleos\SeoBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -23,8 +21,8 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('sonata_seo');
-        $rootNode = $treeBuilder->getRootNode();
+        $treeBuilder = new TreeBuilder('nucleos_seo');
+        $rootNode    = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
@@ -32,7 +30,7 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('page')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('default')->defaultValue('sonata.seo.page.default')->end()
+                        ->scalarNode('default')->defaultValue('nucleos_seo.page.default')->end()
                         ->arrayNode('head')
                             ->normalizeKeys(false)
                             ->useAttributeAsKey('attribute')
@@ -64,7 +62,8 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
 
         return $treeBuilder;
     }

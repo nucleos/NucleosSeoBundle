@@ -3,13 +3,10 @@ includes:
 
 parameters:
     level: 8
+
     paths:
         - src
         - tests
-    treatPhpDocTypesAsCertain: false
-    checkGenericClassInNonGenericObjectType: true
-    checkInternalClassCaseSensitivity: true
-    checkMissingIterableValueType: true
-    checkMissingVarTagTypehint: true
-    checkMissingTypehints: true
-    checkUninitializedProperties: true
+
+    bootstrapFiles:
+        - vendor-bin/tools/vendor/autoload.php

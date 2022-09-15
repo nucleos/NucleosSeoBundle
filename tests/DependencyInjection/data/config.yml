@@ -1,4 +1,4 @@
-# Test data for sonata_seo
+# Test data for nucleos_seo
 page:
     head:
         'xmlns:og': 'http://ogp.me/ns#'
