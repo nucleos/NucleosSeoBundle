@@ -9,7 +9,7 @@
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
   </php>
   <testsuites>
-    <testsuite name="SetlistFmBundle Test Suite">
+    <testsuite name="SeoBundle Test Suite">
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>

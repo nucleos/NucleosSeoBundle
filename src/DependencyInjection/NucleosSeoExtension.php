@@ -11,14 +11,9 @@ declare(strict_types=1);
 
 namespace Nucleos\SeoBundle\DependencyInjection;
 
-use RuntimeException;
-use Sonata\Exporter\Source\DoctrineDBALConnectionSourceIterator;
-use Sonata\Exporter\Source\SymfonySitemapSourceIterator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -30,7 +25,7 @@ final class NucleosSeoExtension extends Extension
     {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
-        $config        = $this->fixConfiguration($config);
+        $config        = $config;
 
         /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
@@ -43,10 +38,8 @@ final class NucleosSeoExtension extends Extension
 
         $loader->load('event.php');
         $loader->load('services.php');
-        $loader->load('commands.php');
 
         $this->configureSeoPage($config['page'], $container);
-        $this->configureSitemap($config['sitemap'], $container);
 
         $container->getDefinition('nucleos_seo.twig.extension')
             ->replaceArgument(1, $config['encoding'])
@@ -61,107 +54,5 @@ final class NucleosSeoExtension extends Extension
     private function configureSeoPage(array $config, ContainerBuilder $container): void
     {
         $container->setParameter('nucleos_seo.config', $config);
-    }
-
-    /**
-     * Configure the sitemap source manager.
-     *
-     * @param mixed[] $config
-     */
-    private function configureSitemap(array $config, ContainerBuilder $container): void
-    {
-        $source = $container->getDefinition('nucleos_seo.sitemap.manager');
-
-        $source->setShared(false);
-
-        foreach ($config['doctrine_orm'] as $pos => $sitemap) {
-            // define the connectionIterator
-            $connectionIteratorId = 'nucleos_seo.source.doctrine_connection_iterator_'.$pos;
-
-            $connectionIterator = new Definition(DoctrineDBALConnectionSourceIterator::class, [
-                new Reference($sitemap['connection']),
-                $sitemap['query'],
-            ]);
-
-            $connectionIterator->setPublic(false);
-            $container->setDefinition($connectionIteratorId, $connectionIterator);
-
-            // define the sitemap proxy iterator
-            $sitemapIteratorId = 'nucleos_seo.source.doctrine_sitemap_iterator_'.$pos;
-
-            $sitemapIterator = new Definition(SymfonySitemapSourceIterator::class, [
-                new Reference($connectionIteratorId),
-                new Reference('router'),
-                $sitemap['route'],
-                $sitemap['parameters'],
-            ]);
-
-            $sitemapIterator->setPublic(false);
-
-            $container->setDefinition($sitemapIteratorId, $sitemapIterator);
-
-            $source->addMethodCall('addSource', [$sitemap['group'], new Reference($sitemapIteratorId), $sitemap['types']]);
-        }
-
-        foreach ($config['services'] as $service) {
-            $source->addMethodCall('addSource', [$service['group'], new Reference($service['id']), $service['types']]);
-        }
-    }
-
-    /**
-     * Fix the sitemap configuration.
-     *
-     * @param mixed[] $config
-     *
-     * @return mixed[]
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     */
-    private function fixConfiguration(array $config): array
-    {
-        foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
-            $sitemap['group']      ??= false;
-            $sitemap['types']      ??= [];
-            $sitemap['connection'] ??= 'doctrine.dbal.default_connection';
-            $sitemap['route']      ??= false;
-            $sitemap['parameters'] ??= false;
-            $sitemap['query']      ??= false;
-
-            if (false === $sitemap['route']) {
-                throw new RuntimeException('Route cannot be empty, please review the nucleos_seo.sitemap configuration');
-            }
-
-            if (false === $sitemap['query']) {
-                throw new RuntimeException('Query cannot be empty, please review the nucleos_seo.sitemap configuration');
-            }
-
-            if (false === $sitemap['parameters']) {
-                throw new RuntimeException('Route\'s parameters cannot be empty, please review the nucleos_seo.sitemap configuration');
-            }
-
-            $config['sitemap']['doctrine_orm'][$pos] = $sitemap;
-        }
-
-        foreach ($config['sitemap']['services'] as $pos => $sitemap) {
-            if (!\is_array($sitemap)) {
-                $sitemap = [
-                    'group' => false,
-                    'types' => [],
-                    'id'    => $sitemap,
-                ];
-            } else {
-                $sitemap['group'] ??= false;
-                $sitemap['types'] ??= [];
-
-                if (!isset($sitemap['id'])) {
-                    throw new RuntimeException('Service id must to be defined, please review the nucleos_seo.sitemap configuration');
-                }
-            }
-
-            $config['sitemap']['services'][$pos] = $sitemap;
-        }
-
-        return $config;
     }
 }

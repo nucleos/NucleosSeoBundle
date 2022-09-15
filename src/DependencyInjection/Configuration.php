@@ -51,17 +51,6 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('title_suffix')->defaultNull()->end()
                     ->end()
                 ->end()
-                ->arrayNode('sitemap')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->arrayNode('doctrine_orm')
-                            ->prototype('variable')->end()
-                        ->end()
-                        ->arrayNode('services')
-                            ->prototype('variable')->end()
-                        ->end()
-                    ->end()
-                ->end()
             ->end()
         ;
 
