@@ -12,7 +12,7 @@ NucleosSeoBundle
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosSeoBundle/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosSeoBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosSeoBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosSeoBundle)
 
-The NucleosSeoundle is a fork of [SonataSeoBundle](https://github.com/sonata-project/SonataSeoBundle/) which respects BC breaks on stable branches. It also provides sitemap functionality of the deprecated [NucleosSeoBundle](https://github.com/nucleos/NucleosSeoBundle).
+The NucleosSeoBundle is a fork of [SonataSeoBundle](https://github.com/sonata-project/SonataSeoBundle/) which respects BC. It also provides sitemap functionality of the deprecated [NucleosSeoBundle](https://github.com/nucleos/NucleosSeoBundle).
 
 ## Installation
 
