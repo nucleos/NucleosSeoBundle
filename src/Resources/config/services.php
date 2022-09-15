@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -9,16 +7,20 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+namespace Symfony\Component\DependencyInjection\Loader\Configurator;
+
+use Nucleos\SeoBundle\Generator\SitemapGenerator;
+use Nucleos\SeoBundle\Generator\SitemapGeneratorInterface;
 use Nucleos\SeoBundle\Seo\SeoPage;
+use Nucleos\SeoBundle\Sitemap\Definition\DefintionManager;
+use Nucleos\SeoBundle\Sitemap\Definition\DefintionManagerInterface;
+use Nucleos\SeoBundle\Sitemap\SitemapServiceManager;
+use Nucleos\SeoBundle\Sitemap\SitemapServiceManagerInterface;
 use Nucleos\SeoBundle\Twig\Extension\SeoExtension;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
+use Symfony\Component\DependencyInjection\Reference;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    // Use "service" function for creating references to services when dropping support for Symfony 4.4
-    // Use "param" function for creating references to parameters when dropping support for Symfony 5.1
-    $containerConfigurator->services()
-
+return static function (ContainerConfigurator $container): void {
+    $container->services()
         ->set('nucleos_seo.page.default', SeoPage::class)
             ->public()
 
@@ -28,5 +30,25 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 new ReferenceConfigurator('nucleos_seo.page'),
                 '',
             ])
+
+        ->alias(SitemapServiceManagerInterface::class, SitemapServiceManager::class)
+            ->public()
+
+        ->alias(DefintionManagerInterface::class, DefintionManager::class)
+            ->public()
+
+        ->alias(SitemapGeneratorInterface::class, SitemapGenerator::class)
+
+        ->set(SitemapServiceManager::class)
+
+        ->set(DefintionManager::class)
+
+        ->set(SitemapGenerator::class)
+            ->args([
+                new Reference(SitemapServiceManagerInterface::class),
+                new Reference(DefintionManagerInterface::class),
+                null,
+            ])
+
     ;
 };

@@ -6,7 +6,8 @@
     "keywords": [
         "seo",
         "sonata",
-        "breadcrumb"
+        "breadcrumb",
+        "sitemap"
     ],
     "authors": [
         {
@@ -36,6 +37,8 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*",
+        "psr/cache": "^1.0 || ^2.0 || ^3.0",
+        "psr/simple-cache": "^1.0 || ^2.0 || ^3.0",
         "sonata-project/block-bundle": "^4.0",
         "symfony/config": "^5.4 || ^6.0",
         "symfony/dependency-injection": "^5.4 || ^6.0",
@@ -50,6 +53,7 @@
         "ergebnis/composer-normalize": "^2.0.1",
         "knplabs/knp-menu": "^3.0",
         "knplabs/knp-menu-bundle": "^3.0",
+        "symfony/browser-kit": "^5.4 || ^6.0",
         "symfony/filesystem": "^5.4 || ^6.0",
         "symfony/finder": "^5.4 || ^6.0",
         "symfony/phpunit-bridge": "^6.1",

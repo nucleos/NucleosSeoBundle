@@ -1,0 +1,3 @@
+nucleos_seo_xml:
+    path:   /sitemap.xml
+    defaults:  { _controller: 'Nucleos\SeoBundle\Action\SitemapXMLAction' }

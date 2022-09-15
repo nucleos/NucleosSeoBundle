@@ -13,6 +13,7 @@ namespace Nucleos\SeoBundle;
 
 use Nucleos\SeoBundle\DependencyInjection\Compiler\BreadcrumbBlockServicesCompilerPass;
 use Nucleos\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
+use Nucleos\SeoBundle\DependencyInjection\Compiler\SitemapCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -22,5 +23,6 @@ final class NucleosSeoBundle extends Bundle
     {
         $container->addCompilerPass(new BreadcrumbBlockServicesCompilerPass());
         $container->addCompilerPass(new ServiceCompilerPass());
+        $container->addCompilerPass(new SitemapCompilerPass());
     }
 }
