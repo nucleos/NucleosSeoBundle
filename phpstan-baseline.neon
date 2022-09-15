@@ -1,17 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Nucleos\\\\SetlistFmBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
+			message: "#^Call to function is_array\\(\\) with array\\<string, mixed\\> will always evaluate to true\\.$#"
 			count: 1
-			path: tests/App/AppKernel.php
-
-		-
-			message: "#^Method Nucleos\\\\SetlistFmBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$loader with no type specified\\.$#"
-			count: 1
-			path: tests/App/AppKernel.php
-
-		-
-			message: "#^Method Nucleos\\\\SetlistFmBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureRoutes\\(\\) has parameter \\$routes with no type specified\\.$#"
-			count: 1
-			path: tests/App/AppKernel.php
+			path: src/Seo/SeoPage.php
 
