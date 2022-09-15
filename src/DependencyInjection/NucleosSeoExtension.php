@@ -11,35 +11,36 @@ declare(strict_types=1);
 
 namespace Nucleos\SeoBundle\DependencyInjection;
 
+use Nucleos\SeoBundle\Generator\SitemapGenerator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-/**
- * This is the class that loads and manages your bundle configuration.
- */
 final class NucleosSeoExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
-        $config        = $config;
+
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('action.php');
+        $loader->load('event.php');
+        $loader->load('services.php');
+        $loader->load('sitemap.php');
 
         /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
 
-        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-
-        if (isset($bundles['SonataBlockBundle'], $bundles['KnpMenuBundle'])) {
+        if (isset($bundles['KnpMenuBundle'])) {
             $loader->load('blocks.php');
         }
 
-        $loader->load('event.php');
-        $loader->load('services.php');
-
         $this->configureSeoPage($config['page'], $container);
+        $this->configureCache($container, $config);
+        $this->configureSitemap($container, $config);
 
         $container->getDefinition('nucleos_seo.twig.extension')
             ->replaceArgument(1, $config['encoding'])
@@ -47,12 +48,32 @@ final class NucleosSeoExtension extends Extension
     }
 
     /**
-     * Configure the default seo page.
-     *
-     * @param mixed[] $config
+     * @param array<mixed> $config
      */
     private function configureSeoPage(array $config, ContainerBuilder $container): void
     {
         $container->setParameter('nucleos_seo.config', $config);
+    }
+
+    /**
+     * @param array<mixed> $config
+     */
+    private function configureCache(ContainerBuilder $container, array $config): void
+    {
+        if (null === $config['cache']['service']) {
+            return;
+        }
+
+        $container->getDefinition(SitemapGenerator::class)
+            ->replaceArgument(2, new Reference($config['cache']['service']))
+        ;
+    }
+
+    /**
+     * @param array<mixed> $config
+     */
+    private function configureSitemap(ContainerBuilder $container, array $config): void
+    {
+        $container->setParameter('nucleos_seo.sitemap.static_urls', $config['sitemap']['static']);
     }
 }

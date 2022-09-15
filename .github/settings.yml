@@ -4,4 +4,4 @@ repository:
   name: NucleosSeoBundle
   description: 🔌 Seo components.
   homepage: https://nucleos.rocks
-  topics: hacktoberfest, symfony, symfony-bundle, bundle, php, seo, breadcrumb
+  topics: hacktoberfest, symfony, symfony-bundle, bundle, php, seo, breadcrumb, sitemap

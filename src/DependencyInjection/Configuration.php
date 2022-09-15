@@ -11,22 +11,35 @@ declare(strict_types=1);
 
 namespace Nucleos\SeoBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * This is the class that validates and merges configuration from your app/config files.
- */
 final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('nucleos_seo');
-        $rootNode    = $treeBuilder->getRootNode();
+
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
                 ->scalarNode('encoding')->defaultValue('UTF-8')->end()
+            ->end()
+        ;
+
+        $this->addPageSection($rootNode);
+        $this->addSitemapSection($rootNode);
+        $this->addCacheSection($rootNode);
+
+        return $treeBuilder;
+    }
+
+    private function addPageSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
                 ->arrayNode('page')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -53,7 +66,41 @@ final class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
+    }
 
-        return $treeBuilder;
+    private function addCacheSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('cache')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('service')->defaultNull()->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addSitemapSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('sitemap')
+                ->addDefaultsIfNotSet()
+                ->children()
+                    ->arrayNode('static')
+                        ->defaultValue([])
+                        ->prototype('array')
+                            ->children()
+                                 ->scalarNode('url')->end()
+                                 ->integerNode('priority')->defaultNull()->end()
+                                 ->scalarNode('changefreq')->defaultNull()->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 }

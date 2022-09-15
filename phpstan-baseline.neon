@@ -1,7 +1,32 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Argument of an invalid type array\\|bool\\|float\\|int\\|string\\|null supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/DependencyInjection/Compiler/SitemapCompilerPass.php
+
+		-
 			message: "#^Call to function is_array\\(\\) with array\\<string, mixed\\> will always evaluate to true\\.$#"
 			count: 1
 			path: src/Seo/SeoPage.php
+
+		-
+			message: "#^Method Nucleos\\\\SeoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Method Nucleos\\\\SeoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$loader with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Method Nucleos\\\\SeoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureRoutes\\(\\) has parameter \\$routes with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Parameter \\#1 \\$services of class Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceManager constructor expects array\\<Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceInterface\\>, array\\<string, stdClass\\> given\\.$#"
+			count: 1
+			path: tests/Sitemap/SitemapServiceManagerTest.php
 
