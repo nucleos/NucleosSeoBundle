@@ -1,11 +1,12 @@
 {
     "name": "nucleos/seo-bundle",
-    "description": "Symfony NucleosSeoBundle",
+    "description": "Seo components",
     "license": "MIT",
     "type": "symfony-bundle",
     "keywords": [
         "seo",
-        "sonata"
+        "sonata",
+        "breadcrumb"
     ],
     "authors": [
         {
