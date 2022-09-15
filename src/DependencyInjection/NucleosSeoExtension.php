@@ -114,6 +114,9 @@ final class NucleosSeoExtension extends Extension
      * @param mixed[] $config
      *
      * @return mixed[]
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     private function fixConfiguration(array $config): array
     {

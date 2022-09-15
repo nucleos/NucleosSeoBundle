@@ -15,6 +15,9 @@ use Nucleos\SeoBundle\Seo\SeoPage;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 final class SeoPageTest extends TestCase
 {
     public function testAddMeta(): void

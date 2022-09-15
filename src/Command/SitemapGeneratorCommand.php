@@ -171,6 +171,9 @@ final class SitemapGeneratorCommand extends Command
         );
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     private function moveTemporaryFile(string $tempDir, string $permanentDir): void
     {
         $oldFiles = Finder::create()->files()->name('sitemap*.xml')->in($permanentDir);

@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488"/>
+<files psalm-version="4.27.0@faf106e717c37b8c81721845dba9de3d8deed8ff">
+  <file src="src/Command/SitemapGeneratorCommand.php">
+    <InvalidArgument occurrences="1">
+      <code>$write</code>
+    </InvalidArgument>
+    <UndefinedClass occurrences="2">
+      <code>SitemapWriter</code>
+      <code>SitemapWriter</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/DependencyInjection/NucleosSeoExtension.php">
+    <ReservedWord occurrences="4">
+      <code>$loader-&gt;load('blocks.php')</code>
+      <code>$loader-&gt;load('commands.php')</code>
+      <code>$loader-&gt;load('event.php')</code>
+      <code>$loader-&gt;load('services.php')</code>
+    </ReservedWord>
+  </file>
+</files>
