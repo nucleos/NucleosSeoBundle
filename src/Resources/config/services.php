@@ -10,7 +10,6 @@ declare(strict_types=1);
  */
 
 use Nucleos\SeoBundle\Seo\SeoPage;
-use Nucleos\SeoBundle\Sitemap\SourceManager;
 use Nucleos\SeoBundle\Twig\Extension\SeoExtension;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
@@ -29,7 +28,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 new ReferenceConfigurator('nucleos_seo.page'),
                 '',
             ])
-
-        ->set('nucleos_seo.sitemap.manager', SourceManager::class)
     ;
 };
