@@ -49,19 +49,11 @@
     "require-dev": {
         "knplabs/knp-menu": "^3.0",
         "knplabs/knp-menu-bundle": "^3.0",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpstan/phpstan-strict-rules": "^1.0",
-        "phpstan/phpstan-symfony": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "psalm/plugin-phpunit": "^0.17",
         "symfony/console": "^4.4 || ^5.4 || ^6.0",
         "symfony/filesystem": "^4.4 || ^5.4 || ^6.0",
         "symfony/finder": "^4.4 || ^5.4 || ^6.0",
         "symfony/phpunit-bridge": "^6.1",
-        "symfony/yaml": "^4.4 || ^5.4 || ^6.0",
-        "vimeo/psalm": "^4.7.2"
+        "symfony/yaml": "^4.4 || ^5.4 || ^6.0"
     },
     "autoload": {
         "psr-4": {
