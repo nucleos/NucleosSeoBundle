@@ -1,0 +1,31 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'knp_menu_ordered.html.twig' %}
+
+{% block label %}
+    {% set translation_domain = item.getExtra('translation_domain', 'SonataSeoBundle') %}
+    {% if options.allow_safe_labels and item.extra('safe_label', false) %}
+        {{- item.label|raw -}}
+    {% elseif translation_domain is same as(false) %}
+        {{- item.label -}}
+    {% else %}
+        {{- item.label|trans(item.getExtra('translation_params', {}), translation_domain) -}}
+    {% endif %}
+{% endblock %}
+
+{% block list %}
+{% apply spaceless %}
+    <div class="sonata_breadcrumb">
+        {{ parent() }}
+    </div>
+{% endapply %}
+{% endblock %}
