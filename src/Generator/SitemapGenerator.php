@@ -21,20 +21,11 @@ use RuntimeException;
 
 final class SitemapGenerator implements SitemapGeneratorInterface
 {
-    /**
-     * @var CacheInterface|null
-     */
-    private $cache;
+    private ?CacheInterface $cache = null;
 
-    /**
-     * @var SitemapServiceManagerInterface
-     */
-    private $sitemapServiceManager;
+    private SitemapServiceManagerInterface $sitemapServiceManager;
 
-    /**
-     * @var DefintionManagerInterface
-     */
-    private $defintionManager;
+    private DefintionManagerInterface $defintionManager;
 
     public function __construct(SitemapServiceManagerInterface $sitemapServiceManager, DefintionManagerInterface $defintionManager, CacheInterface $cache = null)
     {
@@ -58,9 +49,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
             }
         }
 
-        $xml .= '</urlset>';
-
-        return $xml;
+        return $xml.'</urlset>';
     }
 
     /**

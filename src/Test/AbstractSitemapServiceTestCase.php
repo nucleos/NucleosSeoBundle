@@ -43,7 +43,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
      *     count: int
      * }>
      */
-    private $urls = [];
+    private array $urls = [];
 
     protected function setUp(): void
     {

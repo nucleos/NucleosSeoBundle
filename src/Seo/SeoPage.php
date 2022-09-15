@@ -148,6 +148,9 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
+    /**
+     * @param array<string, string> $attributes
+     */
     public function setHtmlAttributes(array $attributes): self
     {
         $this->htmlAttributes = $attributes;
@@ -179,6 +182,9 @@ final class SeoPage implements SeoPageInterface
         return isset($this->htmlAttributes[$name]);
     }
 
+    /**
+     * @param array<string, string> $attributes
+     */
     public function setHeadAttributes(array $attributes): self
     {
         $this->headAttributes = $attributes;
@@ -234,6 +240,9 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
+    /**
+     * @param array<string, string> $langAlternates
+     */
     public function setLangAlternates(array $langAlternates): self
     {
         $this->langAlternates = $langAlternates;

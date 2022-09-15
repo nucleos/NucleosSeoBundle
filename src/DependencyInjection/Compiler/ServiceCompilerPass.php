@@ -31,6 +31,7 @@ final class ServiceCompilerPass implements CompilerPassInterface
         if (null !== $config['title_prefix']) {
             $definition->addMethodCall('addTitlePrefix', [$config['title_prefix']]);
         }
+
         if (null !== $config['title_suffix']) {
             $definition->addMethodCall('addTitleSuffix', [$config['title_suffix']]);
         }

@@ -16,10 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class SitemapXMLAction
 {
-    /**
-     * @var SitemapGeneratorInterface
-     */
-    private $generator;
+    private SitemapGeneratorInterface $generator;
 
     public function __construct(SitemapGeneratorInterface $generator)
     {

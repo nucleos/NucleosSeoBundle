@@ -20,7 +20,7 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
     /**
      * @var SitemapServiceInterface[]
      */
-    private $services;
+    private array $services;
 
     /**
      * @param SitemapServiceInterface[] $services
@@ -54,7 +54,7 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
 
     private function has(string $id): bool
     {
-        return isset($this->services[$id]) ? true : false;
+        return isset($this->services[$id]);
     }
 
     private function getService(string $id): SitemapServiceInterface
