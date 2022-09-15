@@ -50,25 +50,13 @@ final class Url implements UrlInterface
      */
     public const FREQUENCE_NEVER = 'never';
 
-    /**
-     * @var string
-     */
-    private $loc;
+    private string $loc;
 
-    /**
-     * @var DateTime|null
-     */
-    private $lastMod;
+    private ?DateTime $lastMod = null;
 
-    /**
-     * @var string|null
-     */
-    private $changeFreq;
+    private ?string $changeFreq = null;
 
-    /**
-     * @var int|null
-     */
-    private $priority;
+    private ?int $priority = null;
 
     public function __construct(string $loc, ?int $priority = null, ?string $changeFreq = null, ?DateTime $lastMod = null)
     {

@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Nucleos\SeoBundle\Seo;
 
+use Symfony\Contracts\Service\Attribute\Required;
+
 trait SeoAwareTrait
 {
-    /**
-     * @required
-     */
+    #[Required]
     protected ?SeoPageInterface $seoPage = null;
 
     public function setSeoPage(?SeoPageInterface $seoPage = null): void

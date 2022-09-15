@@ -11,17 +11,16 @@ declare(strict_types=1);
 
 namespace Nucleos\SeoBundle\Sitemap\Definition;
 
-final class SitemapDefinition implements SitemapDefinitionInterface
+use Stringable;
+
+final class SitemapDefinition implements SitemapDefinitionInterface, Stringable
 {
     /**
      * @var array<string, mixed>
      */
-    private $settings;
+    private array $settings;
 
-    /**
-     * @var string
-     */
-    private $type;
+    private string $type;
 
     /**
      * @param array<string, mixed> $settings
@@ -32,7 +31,7 @@ final class SitemapDefinition implements SitemapDefinitionInterface
         $this->type     = $type;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toString();
     }
@@ -47,6 +46,9 @@ final class SitemapDefinition implements SitemapDefinitionInterface
         return $this->type;
     }
 
+    /**
+     * @param array<string, mixed> $settings
+     */
     public function setSettings(array $settings = []): void
     {
         $this->settings = $settings;

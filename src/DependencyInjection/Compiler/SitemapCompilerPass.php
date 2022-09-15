@@ -26,7 +26,7 @@ final class SitemapCompilerPass implements CompilerPassInterface
         $serviceManager    = $container->findDefinition(SitemapServiceManagerInterface::class);
         $definitionManager = $container->findDefinition(DefintionManagerInterface::class);
 
-        foreach ($container->findTaggedServiceIds('nucleos_seo.sitemap') as $id => $attributes) {
+        foreach (array_keys($container->findTaggedServiceIds('nucleos_seo.sitemap')) as $id) {
             $definition = $container->getDefinition($id);
             $definition->setPublic(true);
 

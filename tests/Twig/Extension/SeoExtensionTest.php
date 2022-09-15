@@ -14,6 +14,7 @@ namespace Nucleos\SeoBundle\Tests\Request;
 use Nucleos\SeoBundle\Seo\SeoPageInterface;
 use Nucleos\SeoBundle\Twig\Extension\SeoExtension;
 use PHPUnit\Framework\TestCase;
+use Stringable;
 
 final class SeoExtensionTest extends TestCase
 {
@@ -159,7 +160,7 @@ final class SeoExtensionTest extends TestCase
     }
 }
 
-final class MetaTest
+final class MetaTest implements Stringable
 {
     public function __toString(): string
     {

@@ -24,7 +24,7 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
     /**
      * @var MockObject&SitemapServiceInterface
      */
-    private $serviceMock;
+    private SitemapServiceInterface $serviceMock;
 
     protected function setUp(): void
     {

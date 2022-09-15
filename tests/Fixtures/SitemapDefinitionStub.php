@@ -15,10 +15,7 @@ use Nucleos\SeoBundle\Sitemap\Definition\SitemapDefinitionInterface;
 
 final class SitemapDefinitionStub implements SitemapDefinitionInterface
 {
-    /**
-     * @var string
-     */
-    private $type;
+    private string $type;
 
     public function __construct(string $type)
     {

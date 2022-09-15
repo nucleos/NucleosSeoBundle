@@ -59,6 +59,7 @@ final class NucleosSeoExtensionTest extends AbstractExtensionTestCase
 
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
+
         $extension->load([[]], $container);
 
         static::assertFalse($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));

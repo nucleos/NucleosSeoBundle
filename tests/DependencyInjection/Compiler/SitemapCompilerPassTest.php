@@ -33,10 +33,7 @@ final class SitemapCompilerPassTest extends TestCase
      */
     private $definitionManager;
 
-    /**
-     * @var ContainerBuilder
-     */
-    private $container;
+    private ContainerBuilder $container;
 
     protected function setUp(): void
     {

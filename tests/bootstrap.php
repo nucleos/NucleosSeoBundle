@@ -22,6 +22,6 @@ $files = array_filter([
     __DIR__.'/../../../vendor/symfony/symfony/src/Symfony/Bridge/PhpUnit/bootstrap.php',
     __DIR__.'/../../../vendor/symfony/phpunit-bridge/bootstrap.php',
 ], 'file_exists');
-if (count($files) > 0) {
+if ([] !== $files) {
     require_once current($files);
 }
