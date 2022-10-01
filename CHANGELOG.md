@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.0.2 - TBD
+## 1.0.2 - 2022-10-01
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.0.2](https://github.com/nucleos/NucleosSeoBundle/milestone/5)
 
-- Nothing.
+1.0.x bugfix release (patch)
 
-### Deprecated
+### 1.0.2
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [10: Fix breadcrumb rendering](https://github.com/nucleos/NucleosSeoBundle/pull/10) thanks to @core23
 
 ## 1.0.1 - 2022-09-20
 
