@@ -1,16 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.27.0@faf106e717c37b8c81721845dba9de3d8deed8ff">
+<files psalm-version="5.7.7@e028ba46ba0d7f9a78bc3201c251e137383e145f">
   <file src="src/DependencyInjection/Configuration.php">
-    <UndefinedMethod occurrences="1">
+    <UndefinedMethod>
       <code>children</code>
     </UndefinedMethod>
   </file>
   <file src="src/Test/AbstractSitemapServiceTestCase.php">
-    <InternalClass occurrences="5">
-      <code>new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url-&gt;getLoc()))</code>
+    <InternalClass>
+      <code><![CDATA[new AssertionFailedError(
+                    sprintf("The url '%s' was expected to be called actually was not called", $data['location'])
+                )]]></code>
+      <code><![CDATA[new AssertionFailedError(
+                sprintf(
+                    "The url '%s' was expected with %s changefreq. %s given.",
+                    $url->getLoc(),
+                    $data['changefreq'],
+                    $url->getChangeFreq()
+                )
+            )]]></code>
+      <code><![CDATA[new AssertionFailedError(
+                sprintf(
+                    "The url '%s' was expected with %s priority. %s given.",
+                    $url->getLoc(),
+                    $data['priority'],
+                    $url->getPriority()
+                )
+            )]]></code>
+      <code><![CDATA[new AssertionFailedError(
+                sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
+            )]]></code>
+      <code><![CDATA[new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url->getLoc()))]]></code>
     </InternalClass>
-    <InternalMethod occurrences="5">
-      <code>new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url-&gt;getLoc()))</code>
+    <InternalMethod>
+      <code><![CDATA[new AssertionFailedError(
+                    sprintf("The url '%s' was expected to be called actually was not called", $data['location'])
+                )]]></code>
+      <code><![CDATA[new AssertionFailedError(
+                sprintf(
+                    "The url '%s' was expected with %s changefreq. %s given.",
+                    $url->getLoc(),
+                    $data['changefreq'],
+                    $url->getChangeFreq()
+                )
+            )]]></code>
+      <code><![CDATA[new AssertionFailedError(
+                sprintf(
+                    "The url '%s' was expected with %s priority. %s given.",
+                    $url->getLoc(),
+                    $data['priority'],
+                    $url->getPriority()
+                )
+            )]]></code>
+      <code><![CDATA[new AssertionFailedError(
+                sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
+            )]]></code>
+      <code><![CDATA[new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url->getLoc()))]]></code>
     </InternalMethod>
+    <InvalidArgument>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+    </InvalidArgument>
   </file>
 </files>
