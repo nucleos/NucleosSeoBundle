@@ -49,6 +49,5 @@ return static function (ContainerConfigurator $container): void {
                 new Reference(DefintionManagerInterface::class),
                 null,
             ])
-
     ;
 };

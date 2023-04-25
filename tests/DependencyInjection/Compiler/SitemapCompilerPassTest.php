@@ -61,8 +61,7 @@ final class SitemapCompilerPassTest extends TestCase
 
         $this->definitionManager->expects(static::once())->method('addMethodCall')->with('addDefinition', [
             'acme.sitemap',
-        ])
-        ;
+        ]);
 
         $sitemapDefinition = new Definition();
         $sitemapDefinition->addTag('nucleos_seo.sitemap');
@@ -101,8 +100,7 @@ final class SitemapCompilerPassTest extends TestCase
                     'changefreq' => 'daily',
                 ],
             ],
-        ])
-        ;
+        ]);
 
         $this->container->setParameter('nucleos_seo.sitemap.static_urls', [
             'static' => [
