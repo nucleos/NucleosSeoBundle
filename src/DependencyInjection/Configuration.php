@@ -38,6 +38,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addPageSection(ArrayNodeDefinition $node): void
     {
+        /** @psalm-suppress UndefinedInterfaceMethod */
         $node
             ->children()
                 ->arrayNode('page')
@@ -70,6 +71,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addCacheSection(ArrayNodeDefinition $node): void
     {
+        /** @psalm-suppress UndefinedInterfaceMethod */
         $node
             ->children()
                 ->arrayNode('cache')
@@ -84,6 +86,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addSitemapSection(ArrayNodeDefinition $node): void
     {
+        /** @psalm-suppress UndefinedInterfaceMethod, UndefinedMethod */
         $node
             ->children()
                 ->arrayNode('sitemap')
