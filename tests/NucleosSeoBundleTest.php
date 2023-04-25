@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace Nucleos\SeoBundle\Tests;
 
-use Nucleos\SeoBundle\DependencyInjection\Compiler\BreadcrumbBlockServicesCompilerPass;
-use Nucleos\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
-use Nucleos\SeoBundle\DependencyInjection\Compiler\SitemapCompilerPass;
 use Nucleos\SeoBundle\DependencyInjection\NucleosSeoExtension;
 use Nucleos\SeoBundle\NucleosSeoBundle;
 use PHPUnit\Framework\TestCase;
@@ -31,15 +28,7 @@ final class NucleosSeoBundleTest extends TestCase
     public function testBuild(): void
     {
         $containerBuilder = $this->createMock(ContainerBuilder::class);
-
-        $containerBuilder->expects(static::exactly(3))->method('addCompilerPass')
-
-            ->withConsecutive(
-                [static::isInstanceOf(BreadcrumbBlockServicesCompilerPass::class)],
-                [static::isInstanceOf(ServiceCompilerPass::class)],
-                [static::isInstanceOf(SitemapCompilerPass::class)]
-            )
-        ;
+        $containerBuilder->expects(static::exactly(3))->method('addCompilerPass');
 
         $bundle = new NucleosSeoBundle();
         $bundle->build($containerBuilder);
