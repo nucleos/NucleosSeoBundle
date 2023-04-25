@@ -21,6 +21,5 @@ return static function (ContainerConfigurator $container): void {
             ->args([
                 new Reference(SitemapGenerator::class),
             ])
-
     ;
 };

@@ -253,8 +253,7 @@ final class SitemapGeneratorTest extends TestCase
         $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
             ->willReturn(false)
         ;
-        $cache->method('set')->with(static::stringStartsWith('Sitemap_'), $xmlEntry, 42)
-        ;
+        $cache->method('set')->with(static::stringStartsWith('Sitemap_'), $xmlEntry, 42);
 
         $generator = new SitemapGenerator(
             $this->sitemapServiceManager,
