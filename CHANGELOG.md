@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.2.0 - TBD
+## 1.2.0 - 2023-07-20
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.2.0](https://github.com/nucleos/NucleosSeoBundle/milestone/8)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [20: Add support for sonata-project/block-bundle 5](https://github.com/nucleos/NucleosSeoBundle/pull/20) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [19: Update build tools](https://github.com/nucleos/NucleosSeoBundle/pull/19) thanks to @core23
 
 ## 1.1.0 - 2023-02-26
 
