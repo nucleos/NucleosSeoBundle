@@ -44,10 +44,11 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
 
         $template = $blockContext->getTemplate();
 
-        \assert(\is_string($template));
-
         if ('private' === $blockContext->getSetting('cache_policy')) {
-            return $this->renderPrivateResponse($template, $responseSettings, $response);
+            return $this->renderResponse($template, $responseSettings, $response)
+                ->setTtl(0)
+                ->setPrivate()
+            ;
         }
 
         return $this->renderResponse($template, $responseSettings, $response);
