@@ -55,14 +55,14 @@ final class NucleosSeoExtensionTest extends AbstractExtensionTestCase
         $extension = new NucleosSeoExtension();
         $extension->load([[]], $container);
 
-        static::assertTrue($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));
+        self::assertTrue($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));
 
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
 
         $extension->load([[]], $container);
 
-        static::assertFalse($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));
+        self::assertFalse($container->hasDefinition('nucleos_seo.block.breadcrumb.homepage'));
     }
 
     public function testLoadWithCacheService(): void

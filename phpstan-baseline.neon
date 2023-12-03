@@ -26,6 +26,11 @@ parameters:
 			path: tests/App/AppKernel.php
 
 		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\TestCase\\:\\:createStub\\(\\)\\.$#"
+			count: 6
+			path: tests/Block/Breadcrumb/BreadcrumbTest.php
+
+		-
 			message: "#^Parameter \\#1 \\$services of class Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceManager constructor expects array\\<Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceInterface\\>, array\\<string, stdClass\\> given\\.$#"
 			count: 1
 			path: tests/Sitemap/SitemapServiceManagerTest.php

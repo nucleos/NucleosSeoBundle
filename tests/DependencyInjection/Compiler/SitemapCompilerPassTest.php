@@ -53,13 +53,13 @@ final class SitemapCompilerPassTest extends TestCase
 
     public function testProcess(): void
     {
-        $this->serviceManager->expects(static::once())->method('addMethodCall')
-            ->with('addSitemap', static::callback(static function (array $args): bool {
+        $this->serviceManager->expects(self::once())->method('addMethodCall')
+            ->with('addSitemap', self::callback(static function (array $args): bool {
                 return 'acme.sitemap' === $args[0] && $args[1] instanceof Reference;
             }))
         ;
 
-        $this->definitionManager->expects(static::once())->method('addMethodCall')->with('addDefinition', [
+        $this->definitionManager->expects(self::once())->method('addMethodCall')->with('addDefinition', [
             'acme.sitemap',
         ]);
 
@@ -72,9 +72,9 @@ final class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        static::assertTrue($sitemapDefinition->isPublic());
+        self::assertTrue($sitemapDefinition->isPublic());
 
-        $this->definitionManager->expects(static::never())->method('addMethodCall');
+        $this->definitionManager->expects(self::never())->method('addMethodCall');
     }
 
     public function testProcessWithNoServices(): void
@@ -84,14 +84,14 @@ final class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        static::assertSame([], $this->container->getParameter('nucleos_seo.sitemap.static_urls'));
+        self::assertSame([], $this->container->getParameter('nucleos_seo.sitemap.static_urls'));
 
-        $this->definitionManager->expects(static::never())->method('addMethodCall');
+        $this->definitionManager->expects(self::never())->method('addMethodCall');
     }
 
     public function testProcessWithStaticUrls(): void
     {
-        $this->definitionManager->expects(static::once())->method('addMethodCall')->with('addDefinition', [
+        $this->definitionManager->expects(self::once())->method('addMethodCall')->with('addDefinition', [
             StaticSitemapService::class,
             [
                 [
@@ -123,7 +123,7 @@ final class SitemapCompilerPassTest extends TestCase
         $compiler = new SitemapCompilerPass();
         $compiler->process($this->container);
 
-        $this->serviceManager->expects(static::never())->method('addMethodCall');
-        $this->definitionManager->expects(static::never())->method('addMethodCall');
+        $this->serviceManager->expects(self::never())->method('addMethodCall');
+        $this->definitionManager->expects(self::never())->method('addMethodCall');
     }
 }

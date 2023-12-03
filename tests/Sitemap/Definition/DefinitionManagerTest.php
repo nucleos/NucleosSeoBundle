@@ -25,8 +25,8 @@ final class DefinitionManagerTest extends TestCase
         ]);
 
         foreach ($definition->getAll() as $item) {
-            static::assertInstanceOf(SitemapDefinition::class, $item);
-            static::assertSame([
+            self::assertInstanceOf(SitemapDefinition::class, $item);
+            self::assertSame([
                 'foo' => 'bar',
             ], $item->getSettings());
         }

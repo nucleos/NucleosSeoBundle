@@ -14,6 +14,4 @@ namespace Nucleos\SeoBundle\Tests\Fixtures;
 use Exception;
 use Psr\SimpleCache\InvalidArgumentException as PsrException;
 
-final class InvalidArgumentException extends Exception implements PsrException
-{
-}
+final class InvalidArgumentException extends Exception implements PsrException {}

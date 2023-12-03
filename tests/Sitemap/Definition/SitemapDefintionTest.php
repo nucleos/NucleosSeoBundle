@@ -20,10 +20,10 @@ final class SitemapDefintionTest extends TestCase
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        static::assertSame('acme.sitemap', $definition->getType());
-        static::assertSame('acme.sitemap', $definition->toString());
-        static::assertSame('acme.sitemap', $definition->__toString());
-        static::assertSame([], $definition->getSettings());
+        self::assertSame('acme.sitemap', $definition->getType());
+        self::assertSame('acme.sitemap', $definition->toString());
+        self::assertSame('acme.sitemap', $definition->__toString());
+        self::assertSame([], $definition->getSettings());
     }
 
     public function testSetting(): void
@@ -33,14 +33,14 @@ final class SitemapDefintionTest extends TestCase
             'foo'=> 'bar',
         ]);
 
-        static::assertSame('bar', $definition->getSetting('foo'));
+        self::assertSame('bar', $definition->getSetting('foo'));
     }
 
     public function testSettingWithDefault(): void
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        static::assertSame('baz', $definition->getSetting('foo', 'baz'));
+        self::assertSame('baz', $definition->getSetting('foo', 'baz'));
     }
 
     public function testTtl(): void
@@ -50,7 +50,7 @@ final class SitemapDefintionTest extends TestCase
             'ttl'       => 90,
         ]);
 
-        static::assertSame(90, $definition->getTtl());
+        self::assertSame(90, $definition->getTtl());
     }
 
     public function testTtlWithoutCache(): void
@@ -59,13 +59,13 @@ final class SitemapDefintionTest extends TestCase
             'use_cache' => false,
         ]);
 
-        static::assertSame(0, $definition->getTtl());
+        self::assertSame(0, $definition->getTtl());
     }
 
     public function testTtlDefault(): void
     {
         $definition = new SitemapDefinition('acme.sitemap');
 
-        static::assertSame(0, $definition->getTtl());
+        self::assertSame(0, $definition->getTtl());
     }
 }

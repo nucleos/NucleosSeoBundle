@@ -22,13 +22,13 @@ final class NucleosSeoBundleTest extends TestCase
     {
         $bundle = new NucleosSeoBundle();
 
-        static::assertInstanceOf(NucleosSeoExtension::class, $bundle->getContainerExtension());
+        self::assertInstanceOf(NucleosSeoExtension::class, $bundle->getContainerExtension());
     }
 
     public function testBuild(): void
     {
         $containerBuilder = $this->createMock(ContainerBuilder::class);
-        $containerBuilder->expects(static::exactly(3))->method('addCompilerPass');
+        $containerBuilder->expects(self::exactly(3))->method('addCompilerPass');
 
         $bundle = new NucleosSeoBundle();
         $bundle->build($containerBuilder);

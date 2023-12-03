@@ -40,7 +40,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
             $this->createStub(FactoryInterface::class)
         );
 
-        static::assertTrue($blockService->handleContext('test'));
+        self::assertTrue($blockService->handleContext('test'));
     }
 
     public function testBlockExectute(): void
@@ -53,7 +53,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
         );
 
         $menu = $this->createStub(ItemInterface::class);
-        $menuFactory->expects(static::once())->method('createItem')->with('breadcrumb')
+        $menuFactory->expects(self::once())->method('createItem')->with('breadcrumb')
             ->willReturn($menu)
         ;
 

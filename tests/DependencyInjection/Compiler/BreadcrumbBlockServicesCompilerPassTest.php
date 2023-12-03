@@ -118,6 +118,6 @@ final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
      */
     private function assertServiceOrder(array $services): void
     {
-        static::assertSame($services, $this->getCalledServices());
+        self::assertSame($services, $this->getCalledServices());
     }
 }

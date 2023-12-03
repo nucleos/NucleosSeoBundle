@@ -17,15 +17,15 @@ final class SitemapXMLActionWebTest extends WebTestCase
 {
     public function testSitemapXml(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request('GET', '/sitemap.xml');
 
         $response = $client->getResponse();
 
-        static::assertSame(200, $client->getResponse()->getStatusCode());
-        static::assertResponseIsSuccessful();
-        static::assertSame('text/xml; charset=UTF-8', $response->headers->get('Content-Type'));
-        static::assertSame('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"><url><loc>example.com</loc></url><url><loc>/foo</loc><priority>50</priority></url><url><loc>/bar</loc><priority>75</priority></url></urlset>', $response->getContent());
+        self::assertSame(200, $client->getResponse()->getStatusCode());
+        self::assertResponseIsSuccessful();
+        self::assertSame('text/xml; charset=UTF-8', $response->headers->get('Content-Type'));
+        self::assertSame('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"><url><loc>example.com</loc></url><url><loc>/foo</loc><priority>50</priority></url><url><loc>/bar</loc><priority>75</priority></url></urlset>', $response->getContent());
     }
 }

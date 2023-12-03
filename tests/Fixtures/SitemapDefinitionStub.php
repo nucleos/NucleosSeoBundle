@@ -32,9 +32,7 @@ final class SitemapDefinitionStub implements SitemapDefinitionInterface
         return 42;
     }
 
-    public function setSettings(array $settings = []): void
-    {
-    }
+    public function setSettings(array $settings = []): void {}
 
     public function getSettings(): array
     {

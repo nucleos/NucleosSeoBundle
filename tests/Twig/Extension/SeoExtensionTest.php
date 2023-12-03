@@ -21,14 +21,14 @@ final class SeoExtensionTest extends TestCase
     public function testHtmlAttributes(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getHtmlAttributes')->willReturn([
+        $page->expects(self::once())->method('getHtmlAttributes')->willReturn([
             'xmlns'    => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
         ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame(
+        self::assertSame(
             'xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"',
             $extension->getHtmlAttributes()
         );
@@ -37,38 +37,38 @@ final class SeoExtensionTest extends TestCase
     public function testHeadAttributes(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getHeadAttributes')->willReturn([]);
+        $page->expects(self::once())->method('getHeadAttributes')->willReturn([]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame('', $extension->getHeadAttributes());
+        self::assertSame('', $extension->getHeadAttributes());
     }
 
     public function testTitle(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getTitle')->willReturn('<b>foo bar</b>');
+        $page->expects(self::once())->method('getTitle')->willReturn('<b>foo bar</b>');
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame('<title>foo bar</title>', $extension->getTitle());
+        self::assertSame('<title>foo bar</title>', $extension->getTitle());
     }
 
     public function getTitleText(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getTitle')->willReturn('<b>foo bar</b>');
+        $page->expects(self::once())->method('getTitle')->willReturn('<b>foo bar</b>');
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame('foo bar', $extension->getTitleText());
+        self::assertSame('foo bar', $extension->getTitleText());
     }
 
     public function testEncoding(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getTitle')->willReturn('pięć głów zatkniętych na pal');
-        $page->expects(static::once())->method('getMetas')->willReturn([
+        $page->expects(self::once())->method('getTitle')->willReturn('pięć głów zatkniętych na pal');
+        $page->expects(self::once())->method('getMetas')->willReturn([
             'http-equiv' => [],
             'name'       => ['foo' => ['pięć głów zatkniętych na pal', []]],
             'schema'     => [],
@@ -78,9 +78,9 @@ final class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame('<title>pięć głów zatkniętych na pal</title>', $extension->getTitle());
+        self::assertSame('<title>pięć głów zatkniętych na pal</title>', $extension->getTitle());
 
-        static::assertSame(
+        self::assertSame(
             "<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n",
             $extension->getMetadatas()
         );
@@ -89,7 +89,7 @@ final class SeoExtensionTest extends TestCase
     public function testMetadatas(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getMetas')->willReturn([
+        $page->expects(self::once())->method('getMetas')->willReturn([
             'http-equiv' => [],
             'name'       => ['foo' => ['bar "\'"', []]],
             'schema'     => [],
@@ -102,7 +102,7 @@ final class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame(
+        self::assertSame(
             "<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n<meta property=\"og:image:width\" content=\"848\" />\n<meta property=\"og:type\" content=\"article\" />\n",
             $extension->getMetadatas()
         );
@@ -113,17 +113,17 @@ final class SeoExtensionTest extends TestCase
         $page      = $this->createMock(SeoPageInterface::class);
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame('nucleos_seo', $extension->getName());
+        self::assertSame('nucleos_seo', $extension->getName());
     }
 
     public function testLinkCanonical(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::any())->method('getLinkCanonical')->willReturn('http://example.com');
+        $page->expects(self::any())->method('getLinkCanonical')->willReturn('http://example.com');
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame(
+        self::assertSame(
             "<link rel=\"canonical\" href=\"http://example.com\"/>\n",
             $extension->getLinkCanonical()
         );
@@ -132,13 +132,13 @@ final class SeoExtensionTest extends TestCase
     public function testLangAlternates(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getLangAlternates')->willReturn([
+        $page->expects(self::once())->method('getLangAlternates')->willReturn([
             'http://example.com/' => 'x-default',
         ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame(
+        self::assertSame(
             "<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n",
             $extension->getLangAlternates()
         );
@@ -147,13 +147,13 @@ final class SeoExtensionTest extends TestCase
     public function testOEmbedLinks(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects(static::once())->method('getOembedLinks')->willReturn([
+        $page->expects(self::once())->method('getOembedLinks')->willReturn([
             'Foo' => 'http://example.com/',
         ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        static::assertSame(
+        self::assertSame(
             "<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n",
             $extension->getOembedLinks()
         );
