@@ -45,8 +45,8 @@ final class SitemapServiceManagerTest extends TestCase
         ]);
         $result =  $manager->get($definition);
 
-        static::assertInstanceOf(SitemapServiceInterface::class, $result);
-        static::assertSame([
+        self::assertInstanceOf(SitemapServiceInterface::class, $result);
+        self::assertSame([
             'custom'           => 'foo',
             'use_cache'        => true,
             'extra_cache_keys' => [],
@@ -70,8 +70,8 @@ final class SitemapServiceManagerTest extends TestCase
         ]);
         $result =  $manager->get($definition);
 
-        static::assertInstanceOf(SitemapServiceInterface::class, $result);
-        static::assertSame([
+        self::assertInstanceOf(SitemapServiceInterface::class, $result);
+        self::assertSame([
             'use_cache'        => false,
             'extra_cache_keys' => ['my-key'],
             'ttl'              => 0,
@@ -122,6 +122,6 @@ final class SitemapServiceManagerTest extends TestCase
 
         $definition = new SitemapDefinitionStub('my-type');
 
-        static::assertSame($service, $manager->get($definition));
+        self::assertSame($service, $manager->get($definition));
     }
 }

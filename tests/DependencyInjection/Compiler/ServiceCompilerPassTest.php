@@ -38,11 +38,11 @@ final class ServiceCompilerPassTest extends TestCase
 
         (new ServiceCompilerPass())->process($container);
 
-        static::assertTrue($container->has('nucleos_seo.page'));
-        static::assertTrue($container->has(SeoPageInterface::class));
-        static::assertSame($container->get('nucleos_seo.page'), $container->get(SeoPageInterface::class));
+        self::assertTrue($container->has('nucleos_seo.page'));
+        self::assertTrue($container->has(SeoPageInterface::class));
+        self::assertSame($container->get('nucleos_seo.page'), $container->get(SeoPageInterface::class));
 
-        static::assertInstanceOf(SeoPage::class, $container->get(SeoPageInterface::class));
+        self::assertInstanceOf(SeoPage::class, $container->get(SeoPageInterface::class));
     }
 
     public function testGlobalTitle(): void
@@ -69,7 +69,7 @@ final class ServiceCompilerPassTest extends TestCase
 
         \assert($page instanceof SeoPageInterface);
 
-        static::assertSame('Project name', $page->getOriginalTitle());
-        static::assertSame('Prefix Project name Suffix', $page->getTitle());
+        self::assertSame('Project name', $page->getOriginalTitle());
+        self::assertSame('Prefix Project name Suffix', $page->getTitle());
     }
 }

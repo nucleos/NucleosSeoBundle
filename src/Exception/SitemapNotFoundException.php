@@ -13,6 +13,4 @@ namespace Nucleos\SeoBundle\Exception;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final class SitemapNotFoundException extends NotFoundHttpException
-{
-}
+final class SitemapNotFoundException extends NotFoundHttpException {}

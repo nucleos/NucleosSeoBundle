@@ -28,7 +28,7 @@ final class SitemapXMLActionTest extends TestCase
 
         $response = $action();
 
-        static::assertSame('text/xml', $response->headers->get('Content-Type'));
-        static::assertSame('<xml></xml>', $response->getContent());
+        self::assertSame('text/xml', $response->headers->get('Content-Type'));
+        self::assertSame('<xml></xml>', $response->getContent());
     }
 }

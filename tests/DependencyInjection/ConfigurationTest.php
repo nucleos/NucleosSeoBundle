@@ -39,7 +39,7 @@ final class ConfigurationTest extends TestCase
             ],
         ];
 
-        static::assertSame($expected, $this->processConfiguration([[]]));
+        self::assertSame($expected, $this->processConfiguration([[]]));
     }
 
     public function testKeysAreNotNormalized(): void
@@ -62,7 +62,7 @@ final class ConfigurationTest extends TestCase
             $values
         );
 
-        static::assertSame($expected, $config);
+        self::assertSame($expected, $config);
     }
 
     public function testWithYamlConfig(): void
@@ -80,9 +80,9 @@ final class ConfigurationTest extends TestCase
             $values
         );
 
-        static::assertSame($expected, $config);
+        self::assertSame($expected, $config);
 
-        static::assertSame('website', $config['page']['metas']['property']['og:type']);
+        self::assertSame('website', $config['page']['metas']['property']['og:type']);
     }
 
     /**

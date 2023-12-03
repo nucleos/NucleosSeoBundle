@@ -16,9 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class DemoSitemap implements SitemapServiceInterface
 {
-    public function configureSettings(OptionsResolver $resolver): void
-    {
-    }
+    public function configureSettings(OptionsResolver $resolver): void {}
 
     public function execute(SitemapDefinitionInterface $sitemap): array
     {

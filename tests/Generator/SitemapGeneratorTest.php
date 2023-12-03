@@ -73,7 +73,7 @@ final class SitemapGeneratorTest extends TestCase
             $this->defintionManager
         );
 
-        static::assertSame($expected, $generator->toXML());
+        self::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithNoEntries(): void
@@ -93,7 +93,7 @@ final class SitemapGeneratorTest extends TestCase
             $this->defintionManager
         );
 
-        static::assertSame($expected, $generator->toXML());
+        self::assertSame($expected, $generator->toXML());
     }
 
     public function testToXML(): void
@@ -143,7 +143,7 @@ final class SitemapGeneratorTest extends TestCase
             $this->defintionManager
         );
 
-        static::assertSame($expected, $generator->toXML());
+        self::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithExistingCache(): void
@@ -186,10 +186,10 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
+        $cache->method('has')->with(self::stringStartsWith('Sitemap_'))
             ->willReturn(true)
         ;
-        $cache->method('get')->with(static::stringStartsWith('Sitemap_'))
+        $cache->method('get')->with(self::stringStartsWith('Sitemap_'))
             ->willReturn($xmlEntry)
         ;
 
@@ -199,7 +199,7 @@ final class SitemapGeneratorTest extends TestCase
             $cache
         );
 
-        static::assertSame($expected, $generator->toXML());
+        self::assertSame($expected, $generator->toXML());
     }
 
     /**
@@ -250,10 +250,10 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
+        $cache->method('has')->with(self::stringStartsWith('Sitemap_'))
             ->willReturn(false)
         ;
-        $cache->method('set')->with(static::stringStartsWith('Sitemap_'), $xmlEntry, 42);
+        $cache->method('set')->with(self::stringStartsWith('Sitemap_'), $xmlEntry, 42);
 
         $generator = new SitemapGenerator(
             $this->sitemapServiceManager,
@@ -261,7 +261,7 @@ final class SitemapGeneratorTest extends TestCase
             $cache
         );
 
-        static::assertSame($expected, $generator->toXML());
+        self::assertSame($expected, $generator->toXML());
     }
 
     public function testToXMLWithCacheException(): void
@@ -282,7 +282,7 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('has')->with(static::stringStartsWith('Sitemap_'))
+        $cache->method('has')->with(self::stringStartsWith('Sitemap_'))
             ->willThrowException(new InvalidArgumentException())
         ;
 

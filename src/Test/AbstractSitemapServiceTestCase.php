@@ -59,7 +59,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         $result = $this->service->execute($sitemap);
 
         $count = \count($this->urls);
-        static::assertCount($count, $result);
+        self::assertCount($count, $result);
 
         if (0 === $count) {
             return;
@@ -91,7 +91,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
 
     final protected function assertSitemapCount(int $count): void
     {
-        static::assertCount($count, $this->urls);
+        self::assertCount($count, $this->urls);
     }
 
     private function getUrlIndex(UrlInterface $url): int
