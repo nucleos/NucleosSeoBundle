@@ -2,27 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.3.0 - TBD
+## 1.3.0 - 2023-12-05
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.3.0](https://github.com/nucleos/NucleosSeoBundle/milestone/10)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [24: Bump to symfony ^6.4 || ^7.0](https://github.com/nucleos/NucleosSeoBundle/pull/24) thanks to @core23
+ - [22: Update dependency symfony/phpunit-bridge to v7](https://github.com/nucleos/NucleosSeoBundle/pull/22) thanks to @renovate[bot]
+ - [21: Update dependency matthiasnoback/symfony-dependency-injection-test to v5](https://github.com/nucleos/NucleosSeoBundle/pull/21) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [23: Update tools ](https://github.com/nucleos/NucleosSeoBundle/pull/23) thanks to @core23
 
 ## 1.2.0 - 2023-07-20
 
