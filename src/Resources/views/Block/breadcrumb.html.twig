@@ -1,20 +1,22 @@
 {% extends 'knp_menu_ordered.html.twig' %}
 
-{% block label %}
-    {% set translation_domain = item.getExtra('translation_domain', 'NucleosSeoBundle') %}
-    {% if options.allow_safe_labels and item.extra('safe_label', false) %}
-        {{- item.label|raw -}}
-    {% elseif translation_domain is same as(false) %}
-        {{- item.label -}}
-    {% else %}
-        {{- item.label|trans(item.getExtra('translation_params', {}), translation_domain) -}}
-    {% endif %}
-{% endblock %}
+{%- block label -%}
+    {% apply spaceless %}
+        {% set translation_domain = item.getExtra('translation_domain', 'NucleosSeoBundle') %}
+        {% if options.allow_safe_labels and item.extra('safe_label', false) %}
+            {{- item.label|raw -}}
+        {% elseif translation_domain is same as(false) %}
+            {{- item.label -}}
+        {% else %}
+            {{- item.label|trans(item.getExtra('translation_params', {}), translation_domain) -}}
+        {% endif %}
+    {% endapply %}
+{%- endblock -%}
 
 {% block list %}
-{% apply spaceless %}
-    <div class="nucleos_breadcrumb">
-        {{ parent() }}
-    </div>
-{% endapply %}
+    {% apply spaceless %}
+        <div class="nucleos_breadcrumb">
+            {{ parent() }}
+        </div>
+    {% endapply %}
 {% endblock %}
