@@ -60,7 +60,7 @@ final class SitemapServiceManager implements SitemapServiceManagerInterface
     private function getService(string $id): SitemapServiceInterface
     {
         if (!$this->has($id)) {
-            throw new SitemapNotFoundException(sprintf('The sitemap service "%s" does not exist', $id));
+            throw new SitemapNotFoundException(\sprintf('The sitemap service "%s" does not exist', $id));
         }
 
         return $this->services[$id];

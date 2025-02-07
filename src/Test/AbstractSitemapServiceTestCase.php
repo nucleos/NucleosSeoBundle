@@ -70,7 +70,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
             $index = $this->getUrlIndex($url);
 
             if (-1 === $index) {
-                throw new AssertionFailedError(sprintf("The url '%s' was not expected to be called.", $url->getLoc()));
+                throw new AssertionFailedError(\sprintf("The url '%s' was not expected to be called.", $url->getLoc()));
             }
 
             $data = &$this->urls[$index];
@@ -84,7 +84,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         $this->verifyUrls();
     }
 
-    final protected function assertSitemap(string $location, int $priority, string $changeFreq, DateTime $lastMod = null): void
+    final protected function assertSitemap(string $location, int $priority, string $changeFreq, ?DateTime $lastMod = null): void
     {
         $this->urls[] = ['location' => $location, 'priority' => $priority, 'changefreq' => $changeFreq, 'lastmod' => $lastMod, 'count' => 0];
     }
@@ -120,7 +120,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
 
         if (null === $url->getLastMod() || $url->getLastMod() > $lastmod || $url->getLastMod() < $lastmod) {
             throw new AssertionFailedError(
-                sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
+                \sprintf("The url '%s' was expected with a different lastmod.", $url->getLoc())
             );
         }
     }
@@ -132,7 +132,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     {
         if ($url->getPriority() !== $data['priority']) {
             throw new AssertionFailedError(
-                sprintf(
+                \sprintf(
                     "The url '%s' was expected with %s priority. %s given.",
                     $url->getLoc(),
                     $data['priority'],
@@ -149,7 +149,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     {
         if ($url->getChangeFreq() !== $data['changefreq']) {
             throw new AssertionFailedError(
-                sprintf(
+                \sprintf(
                     "The url '%s' was expected with %s changefreq. %s given.",
                     $url->getLoc(),
                     $data['changefreq'],
@@ -164,7 +164,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
         foreach ($this->urls as $data) {
             if (0 === $data['count']) {
                 throw new AssertionFailedError(
-                    sprintf("The url '%s' was expected to be called actually was not called", $data['location'])
+                    \sprintf("The url '%s' was expected to be called actually was not called", $data['location'])
                 );
             }
         }

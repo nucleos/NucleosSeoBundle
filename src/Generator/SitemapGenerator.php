@@ -27,7 +27,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
 
     private DefintionManagerInterface $defintionManager;
 
-    public function __construct(SitemapServiceManagerInterface $sitemapServiceManager, DefintionManagerInterface $defintionManager, CacheInterface $cache = null)
+    public function __construct(SitemapServiceManagerInterface $sitemapServiceManager, DefintionManagerInterface $defintionManager, ?CacheInterface $cache = null)
     {
         $this->sitemapServiceManager = $sitemapServiceManager;
         $this->defintionManager      = $defintionManager;
@@ -59,7 +59,7 @@ final class SitemapGenerator implements SitemapGeneratorInterface
      */
     private function fetch(SitemapDefinitionInterface $definition): string
     {
-        $name = sprintf('Sitemap_%s', md5(serialize($definition)));
+        $name = \sprintf('Sitemap_%s', md5(serialize($definition)));
 
         if (null !== $this->cache && $this->cache->has($name)) {
             return $this->cache->get($name);
