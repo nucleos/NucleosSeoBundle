@@ -57,9 +57,6 @@ final class SeoPageTest extends TestCase
         self::assertFalse($page->hasMeta('property', 'foo'));
     }
 
-    /**
-     * @psalm-suppress InvalidArgument
-     */
     public function testInvalidMetas(): void
     {
         $this->expectException(RuntimeException::class);
