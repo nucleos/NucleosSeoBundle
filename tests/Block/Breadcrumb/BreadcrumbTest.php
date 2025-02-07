@@ -36,8 +36,8 @@ final class BreadcrumbTest extends BlockServiceTestCase
     public function testBlockService(): void
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
-            $this->createStub(Environment::class),
-            $this->createStub(FactoryInterface::class)
+            self::createStub(Environment::class),
+            self::createStub(FactoryInterface::class)
         );
 
         self::assertTrue($blockService->handleContext('test'));
@@ -48,11 +48,11 @@ final class BreadcrumbTest extends BlockServiceTestCase
         $menuFactory = $this->createMock(FactoryInterface::class);
 
         $blockService = new BreadcrumbMenuBlockService_Test(
-            $this->createStub(Environment::class),
+            self::createStub(Environment::class),
             $menuFactory
         );
 
-        $menu = $this->createStub(ItemInterface::class);
+        $menu = self::createStub(ItemInterface::class);
         $menuFactory->expects(self::once())->method('createItem')->with('breadcrumb')
             ->willReturn($menu)
         ;
@@ -69,8 +69,8 @@ final class BreadcrumbTest extends BlockServiceTestCase
     public function testDefaultSettings(): void
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
-            $this->createStub(Environment::class),
-            $this->createStub(FactoryInterface::class)
+            self::createStub(Environment::class),
+            self::createStub(FactoryInterface::class)
         );
 
         $blockContext = $this->getBlockContext($blockService);
