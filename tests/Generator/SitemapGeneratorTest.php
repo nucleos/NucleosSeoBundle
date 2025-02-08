@@ -203,7 +203,7 @@ final class SitemapGeneratorTest extends TestCase
     }
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function testToXMLWithExpiredCache(): void
     {

@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
 final class SeoPageTest extends TestCase
 {
