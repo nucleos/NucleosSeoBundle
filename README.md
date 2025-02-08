@@ -10,7 +10,6 @@ NucleosSeoBundle
 
 [![Continuous Integration](https://github.com/nucleos/NucleosSeoBundle/actions/workflows/continuous-integration.yml/badge.svg?event=push)](https://github.com/nucleos/NucleosSeoBundle/actions?query=workflow%3A"Continuous+Integration"+event%3Apush)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosSeoBundle/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosSeoBundle)
-[![Type Coverage](https://shepherd.dev/github/nucleos/NucleosSeoBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosSeoBundle)
 
 The NucleosSeoBundle is a fork of [SonataSeoBundle](https://github.com/sonata-project/SonataSeoBundle/) which respects BC. It also provides sitemap functionality of the deprecated [NucleosSitemapBundle](https://github.com/nucleos/NucleosSitemapBundle).
 
