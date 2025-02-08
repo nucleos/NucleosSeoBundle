@@ -16,7 +16,7 @@ use RuntimeException;
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  *
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
 final class SeoPage implements SeoPageInterface
 {

@@ -108,7 +108,7 @@ abstract class AbstractSitemapServiceTestCase extends TestCase
     /**
      * @phpstan-param array{lastmod: DateTime|null} $data
      *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      */
     private function assertLastmod(array $data, UrlInterface $url): void
     {
