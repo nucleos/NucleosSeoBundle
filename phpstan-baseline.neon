@@ -1,32 +1,50 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Argument of an invalid type array\\|bool\\|float\\|int\\|string\\|null supplied for foreach, only iterables are supported\\.$#"
+			message: '#^Argument of an invalid type array\|bool\|float\|int\|string\|null supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
 			count: 1
 			path: src/DependencyInjection/Compiler/SitemapCompilerPass.php
 
 		-
-			message: "#^Call to function is_array\\(\\) with array\\<string, mixed\\> will always evaluate to true\\.$#"
+			message: '#^Trait Nucleos\\SeoBundle\\Seo\\SeoAwareTrait is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Seo/SeoAwareTrait.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
 			count: 1
 			path: src/Seo/SeoPage.php
 
 		-
-			message: "#^Method Nucleos\\\\SeoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
+			message: '#^Method Nucleos\\SeoBundle\\Tests\\App\\AppKernel\:\:configureContainer\(\) has parameter \$container with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Method Nucleos\\\\SeoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$loader with no type specified\\.$#"
+			message: '#^Method Nucleos\\SeoBundle\\Tests\\App\\AppKernel\:\:configureContainer\(\) has parameter \$loader with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Method Nucleos\\\\SeoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureRoutes\\(\\) has parameter \\$routes with no type specified\\.$#"
+			message: '#^Method Nucleos\\SeoBundle\\Tests\\App\\AppKernel\:\:configureRoutes\(\) has parameter \$routes with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Parameter \\#1 \\$services of class Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceManager constructor expects array\\<Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceInterface\\>, array\\<string, stdClass\\> given\\.$#"
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''Nucleos\\\\SeoBundle\\\\Sitemap\\\\SitemapServiceInterface'' and Nucleos\\SeoBundle\\Sitemap\\SitemapServiceInterface will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 2
+			path: tests/Sitemap/SitemapServiceManagerTest.php
+
+		-
+			message: '#^Parameter \#1 \$services of class Nucleos\\SeoBundle\\Sitemap\\SitemapServiceManager constructor expects array\<Nucleos\\SeoBundle\\Sitemap\\SitemapServiceInterface\>, array\<string, stdClass\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: tests/Sitemap/SitemapServiceManagerTest.php
 
