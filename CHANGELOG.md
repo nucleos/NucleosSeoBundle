@@ -2,27 +2,34 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.6.0 - TBD
+## 1.6.0 - 2025-10-12
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.6.0](https://github.com/nucleos/NucleosSeoBundle/milestone/16)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.6.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **8**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [39: Update to phpunit v12](https://github.com/nucleos/NucleosSeoBundle/pull/39) thanks to @core23
+ - [38: Drop support for PHP 8.2](https://github.com/nucleos/NucleosSeoBundle/pull/38) thanks to @core23
+ - [31: Update PHPStan packages to v2 (major)](https://github.com/nucleos/NucleosSeoBundle/pull/31) thanks to @renovate[bot]
+ - [29: Update dependency matthiasnoback/symfony-dependency-injection-test to v6](https://github.com/nucleos/NucleosSeoBundle/pull/29) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [37: Remove ci pipeline overrides ](https://github.com/nucleos/NucleosSeoBundle/pull/37) thanks to @core23
+ - [36: Sync tool config ](https://github.com/nucleos/NucleosSeoBundle/pull/36) thanks to @core23
+ - [35: Remove infection testing ](https://github.com/nucleos/NucleosSeoBundle/pull/35) thanks to @core23
+ - [33: Remove psalm in favor of phpstan ](https://github.com/nucleos/NucleosSeoBundle/pull/33) thanks to @core23
 
 ## 1.5.0 - 2024-08-14
 
