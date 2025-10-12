@@ -76,12 +76,12 @@ final class SitemapGenerator implements SitemapGeneratorInterface
 
     private function getLocEntry(UrlInterface $url): string
     {
-        return '<url>'.
-        '<loc>'.$url->getLoc().'</loc>'.
-        (null !== $url->getLastMod() ? '<lastmod>'.$url->getLastMod()->format('c').'</lastmod>' : '').
-        (null !== $url->getChangeFreq() ? '<changefreq>'.$url->getChangeFreq().'</changefreq>' : '').
-        (null  !== $url->getPriority() ? '<priority>'.$url->getPriority().'</priority>' : '').
-        '</url>';
+        return '<url>'
+        .'<loc>'.$url->getLoc().'</loc>'
+        .(null !== $url->getLastMod() ? '<lastmod>'.$url->getLastMod()->format('c').'</lastmod>' : '')
+        .(null !== $url->getChangeFreq() ? '<changefreq>'.$url->getChangeFreq().'</changefreq>' : '')
+        .(null  !== $url->getPriority() ? '<priority>'.$url->getPriority().'</priority>' : '')
+        .'</url>';
     }
 
     private function generateXML(SitemapDefinitionInterface $definition): string
