@@ -2,27 +2,25 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.7.0 - TBD
+## 1.7.0 - 2026-04-03
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.7.0](https://github.com/nucleos/NucleosSeoBundle/milestone/18)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.7.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [44: Add support for symfony 8](https://github.com/nucleos/NucleosSeoBundle/pull/44) thanks to @core23
+ - [40: Update dependency symfony/phpunit-bridge to v8](https://github.com/nucleos/NucleosSeoBundle/pull/40) thanks to @renovate[bot]
 
 ## 1.6.0 - 2025-10-12
 
