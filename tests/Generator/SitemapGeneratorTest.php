@@ -58,7 +58,8 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('foo');
 
-        $this->sitemapServiceManager->method('get')->with($definition)
+        $this->sitemapServiceManager->expects(self::once())->method('get')
+            ->with($definition)
             ->willReturn(null)
         ;
 
@@ -122,13 +123,15 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $sitemap = $this->createMock(SitemapServiceInterface::class);
-        $sitemap->method('execute')->with($definition)
+        $sitemap->expects(self::once())->method('execute')
+            ->with($definition)
             ->willReturn([
                 $url,
             ])
         ;
 
-        $this->sitemapServiceManager->method('get')->with($definition)
+        $this->sitemapServiceManager->expects(self::once())->method('get')
+            ->with($definition)
             ->willReturn($sitemap)
         ;
 
@@ -175,7 +178,8 @@ final class SitemapGeneratorTest extends TestCase
 
         $sitemap = $this->createMock(SitemapServiceInterface::class);
 
-        $this->sitemapServiceManager->method('get')->with($definition)
+        $this->sitemapServiceManager->expects(self::never())->method('get')
+            ->with($definition)
             ->willReturn($sitemap)
         ;
 
@@ -186,10 +190,12 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('has')->with(self::stringStartsWith('Sitemap_'))
+        $cache->expects(self::once())->method('has')
+            ->with(self::stringStartsWith('Sitemap_'))
             ->willReturn(true)
         ;
-        $cache->method('get')->with(self::stringStartsWith('Sitemap_'))
+        $cache->expects(self::once())->method('get')
+            ->with(self::stringStartsWith('Sitemap_'))
             ->willReturn($xmlEntry)
         ;
 
@@ -233,13 +239,15 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $sitemap = $this->createMock(SitemapServiceInterface::class);
-        $sitemap->method('execute')->with($definition)
+        $sitemap->expects(self::once())->method('execute')
+            ->with($definition)
             ->willReturn([
                 $url,
             ])
         ;
 
-        $this->sitemapServiceManager->method('get')->with($definition)
+        $this->sitemapServiceManager->expects(self::once())->method('get')
+            ->with($definition)
             ->willReturn($sitemap)
         ;
 
@@ -250,10 +258,13 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('has')->with(self::stringStartsWith('Sitemap_'))
+        $cache->expects(self::once())->method('has')
+            ->with(self::stringStartsWith('Sitemap_'))
             ->willReturn(false)
         ;
-        $cache->method('set')->with(self::stringStartsWith('Sitemap_'), $xmlEntry, 42);
+        $cache->expects(self::once())->method('set')
+            ->with(self::stringStartsWith('Sitemap_'), $xmlEntry, 42)
+        ;
 
         $generator = new SitemapGenerator(
             $this->sitemapServiceManager,
@@ -271,9 +282,7 @@ final class SitemapGeneratorTest extends TestCase
 
         $definition = new SitemapDefinitionStub('example');
 
-        $this->sitemapServiceManager->method('get')->with($definition)
-            ->willReturn(null)
-        ;
+        $this->sitemapServiceManager->expects(self::never())->method('get');
 
         $this->defintionManager->method('getAll')
             ->willReturn([
@@ -282,7 +291,8 @@ final class SitemapGeneratorTest extends TestCase
         ;
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('has')->with(self::stringStartsWith('Sitemap_'))
+        $cache->expects(self::once())->method('has')
+            ->with(self::stringStartsWith('Sitemap_'))
             ->willThrowException(new InvalidArgumentException())
         ;
 

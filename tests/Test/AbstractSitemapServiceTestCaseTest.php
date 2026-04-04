@@ -40,7 +40,8 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->method('execute')->with($sitemap)
+        $this->serviceMock->expects(self::once())->method('execute')
+            ->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 20, Url::FREQUENCE_DAILY),
                 new Url('/path/bar', 20, Url::FREQUENCE_DAILY),
@@ -59,7 +60,8 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->method('execute')->with($sitemap)
+        $this->serviceMock->expects(self::once())->method('execute')
+            ->with($sitemap)
             ->willReturn(
                 [
                     new Url('/path/foo', 20, Url::FREQUENCE_DAILY),
@@ -79,7 +81,8 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->method('execute')->with($sitemap)
+        $this->serviceMock->expects(self::once())->method('execute')
+            ->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 20, Url::FREQUENCE_DAILY, new DateTime('2018-10-02')),
             ])
@@ -97,7 +100,8 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->method('execute')->with($sitemap)
+        $this->serviceMock->expects(self::once())->method('execute')
+            ->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 60, Url::FREQUENCE_DAILY),
             ])
@@ -115,7 +119,8 @@ final class AbstractSitemapServiceTestCaseTest extends ParentTestCase
 
         $sitemap = $this->createMock(SitemapDefinitionInterface::class);
 
-        $this->serviceMock->method('execute')->with($sitemap)
+        $this->serviceMock->expects(self::once())->method('execute')
+            ->with($sitemap)
             ->willReturn([
                 new Url('/path/foo', 20, Url::FREQUENCE_DAILY),
             ])

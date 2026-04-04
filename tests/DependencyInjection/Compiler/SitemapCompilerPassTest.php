@@ -38,11 +38,13 @@ final class SitemapCompilerPassTest extends TestCase
     protected function setUp(): void
     {
         $this->serviceManager = $this->createMock(Definition::class);
-        $this->serviceManager->method('hasTag')->with('nucleos_seo.sitemap')
+        $this->serviceManager->expects(self::once())->method('hasTag')
+            ->with('nucleos_seo.sitemap')
             ->willReturn(false)
         ;
         $this->definitionManager = $this->createMock(Definition::class);
-        $this->definitionManager->method('hasTag')->with('nucleos_seo.sitemap')
+        $this->definitionManager->expects(self::once())->method('hasTag')
+            ->with('nucleos_seo.sitemap')
             ->willReturn(false)
         ;
 
